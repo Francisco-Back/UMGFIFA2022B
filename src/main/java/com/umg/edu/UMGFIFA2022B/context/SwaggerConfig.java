@@ -12,6 +12,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.Collections;
 
+
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
@@ -31,7 +32,7 @@ public class SwaggerConfig {
                 "API REST UMGFIFA2022",
                 "v1",
                 "Terms of service",
-                new Contact("SACAViX Tech", "www.example.com", "fbacks@miumg.edu.gt"),
+                new Contact("SACAViX Tech", "www.example.com", "myeaddress@company.com"),
                 "License of API", "API license URL", Collections.emptyList());
     }
 }
