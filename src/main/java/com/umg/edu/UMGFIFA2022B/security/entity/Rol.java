@@ -1,7 +1,7 @@
-package security.entity;
+package com.umg.edu.UMGFIFA2022B.security.entity;
 
 import com.sun.istack.NotNull;
-import security.enums.RolNombre;
+import com.umg.edu.UMGFIFA2022B.security.enums.RolNombre;
 
 import javax.persistence.*;
 

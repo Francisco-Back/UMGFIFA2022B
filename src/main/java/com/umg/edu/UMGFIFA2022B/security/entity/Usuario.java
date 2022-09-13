@@ -1,4 +1,4 @@
-package security.entity;
+package com.umg.edu.UMGFIFA2022B.security.entity;
 
 import com.sun.istack.NotNull;
 

@@ -1,4 +1,4 @@
-package security.entity;
+package com.umg.edu.UMGFIFA2022B.security.entity;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
