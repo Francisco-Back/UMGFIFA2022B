@@ -17,7 +17,6 @@ public class UserService {
 	
 	
 	public UserService(UserRepository repository, UserInDTOoUseEntity mapper) {
-		super();
 		this.repository = repository;
 		this.mapper = mapper;
 	}
