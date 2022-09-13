@@ -24,7 +24,7 @@ public  class UserEntity {
     private String Correo;
 	private String Avatar;
 	private String Password;
-	private String Token;
+	//private String Token;
 	private LocalDateTime createDate;
 
 	}
