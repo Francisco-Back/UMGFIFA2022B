@@ -14,8 +14,10 @@ import java.util.Date;
 @Component
 public class JwtProvider {
     private final static Logger logger = LoggerFactory.getLogger(JwtProvider.class);
+
     @Value("${jwt.secret}")
     private String secret;
+
     @Value("${jwt.expiration}")
     private int expiration;
 
@@ -38,13 +40,13 @@ public class JwtProvider {
             return true;
         }catch (MalformedJwtException e){
             logger.error("token mal formado");
-        }catch (UnsupportedJwtException e) {
+        }catch (UnsupportedJwtException e){
             logger.error("token no soportado");
-        }catch (ExpiredJwtException e) {
+        }catch (ExpiredJwtException e){
             logger.error("token expirado");
-        }catch (IllegalArgumentException e) {
-            logger.error("token vacio");
-        }catch (SignatureException e) {
+        }catch (IllegalArgumentException e){
+            logger.error("token vacío");
+        }catch (SignatureException e){
             logger.error("fail en la firma");
         }
         return false;

@@ -1,14 +1,17 @@
 package com.umg.edu.UMGFIFA2022B.security.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 import com.umg.edu.UMGFIFA2022B.security.entity.Usuario;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+@Component
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
+
     Optional<Usuario> findByNombreUsuario(String nombreUsuario);
-    boolean existByNombreUsuario(String nombreUsuario);
-    boolean existByEmail(String Email);
+    boolean existsByNombreUsuario(String nombreUsuario);
+    boolean existsByEmail(String Email);
 }

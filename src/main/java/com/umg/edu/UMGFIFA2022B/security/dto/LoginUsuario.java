@@ -1,8 +1,9 @@
 package com.umg.edu.UMGFIFA2022B.security.dto;
 
-import jakarta.validation.constraints.NotBlank;
+import javax.validation.constraints.NotBlank;
 
-public class LoginUsuario{
+
+public class LoginUsuario {
     @NotBlank
     private String nombreUsuario;
     @NotBlank

@@ -1,9 +1,9 @@
 package com.umg.edu.UMGFIFA2022B.security.entity;
 
-import com.sun.istack.NotNull;
 import com.umg.edu.UMGFIFA2022B.security.enums.RolNombre;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Rol {

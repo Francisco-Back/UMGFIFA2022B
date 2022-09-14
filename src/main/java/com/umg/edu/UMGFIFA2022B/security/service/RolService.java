@@ -5,8 +5,9 @@ import com.umg.edu.UMGFIFA2022B.security.enums.RolNombre;
 import com.umg.edu.UMGFIFA2022B.security.repository.RolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
+
 import java.util.Optional;
 
 @Service
@@ -18,5 +19,9 @@ public class RolService {
 
     public Optional<Rol> getByRolNombre(RolNombre rolNombre){
         return rolRepository.findByRolNombre(rolNombre);
+    }
+
+    public void save(Rol rol){
+        rolRepository.save(rol);
     }
 }

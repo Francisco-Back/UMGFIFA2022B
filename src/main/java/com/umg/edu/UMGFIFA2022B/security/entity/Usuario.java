@@ -1,17 +1,18 @@
 package com.umg.edu.UMGFIFA2022B.security.entity;
 
-import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
+
 
 @Entity
 public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_usuario;
+    private int id;
     @NotNull
     private String nombre;
     @NotNull
@@ -24,9 +25,9 @@ public class Usuario {
     @NotNull
     private String avatar;
     @NotNull
-    @ManyToMany
-    @JoinTable(name = "usuarioRol", joinColumns = @JoinColumn(name = "id_usuario"),
-    inverseJoinColumns = @JoinColumn(name = "rol_id"))
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "usuario_id"),
+            inverseJoinColumns = @JoinColumn(name = "rol_id"))
     private Set<Rol> roles = new HashSet<>();
 
     public Usuario() {
@@ -43,11 +44,11 @@ public class Usuario {
     }
 
     public int getId_usuario() {
-        return id_usuario;
+        return id;
     }
 
     public void setId_usuario(int id_usuario) {
-        this.id_usuario = id_usuario;
+        this.id = id_usuario;
     }
 
     public String getNombre() {
