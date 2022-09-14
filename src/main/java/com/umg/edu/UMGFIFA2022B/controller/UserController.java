@@ -1,5 +1,6 @@
 package com.umg.edu.UMGFIFA2022B.controller;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import java.util.List;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +23,7 @@ public class UserController {
 	public UserController(UserService userservice) {
 		this.userservice = userservice;
 	}
-	
+	@CrossOrigin(origins = "*")
 	@PostMapping
 	public UserEntity createUser(@RequestBody  UserlnDTO userlnDTO  ) {
 		return userservice.createUser(userlnDTO);
