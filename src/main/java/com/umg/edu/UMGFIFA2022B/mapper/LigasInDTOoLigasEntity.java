@@ -15,6 +15,7 @@ public class LigasInDTOoLigasEntity implements IMapper<LigasInDTO, LigasEntity> 
 		
 		LigasEntity LigasE=new LigasEntity();
 		//user liga
+		
 		LigasE.setId(in.getUserEntity_id());
 		LigasE.setNombreLiga(in.getNombreLiga());
 		LigasE.setFecha_Inicio(in.getFecha_Inicio());

@@ -1,6 +1,5 @@
 package com.umg.edu.UMGFIFA2022B.entity;
 
-import javax.persistence.Entity;
 
 import lombok.Data;
 

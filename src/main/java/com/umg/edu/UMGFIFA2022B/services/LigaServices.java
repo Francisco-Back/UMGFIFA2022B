@@ -1,10 +1,12 @@
 package com.umg.edu.UMGFIFA2022B.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
 import com.umg.edu.UMGFIFA2022B.entity.LigasEntity;
+import com.umg.edu.UMGFIFA2022B.entity.UserEntity;
 import com.umg.edu.UMGFIFA2022B.mapper.LigasInDTOoLigasEntity;
 import com.umg.edu.UMGFIFA2022B.repository.LigasRepository;
 import com.umg.edu.UMGFIFA2022B.services.dto.LigasInDTO;
@@ -31,10 +33,14 @@ public class LigaServices {
 	}
 	
    public List<LigasEntity> SetLigas(){
-	return this.ligasRepository.findAll();
+	return (List<LigasEntity>) this.ligasRepository.findAll();
 	}	
 	
-
+public Optional<LigasEntity> findAllByLigas(UserEntity UserID){
+	Long idU=UserID.getId();
+	
+return this.ligasRepository.findById(idU);	
+}
 	
 
 	
