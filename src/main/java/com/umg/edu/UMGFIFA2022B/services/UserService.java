@@ -1,5 +1,6 @@
 package com.umg.edu.UMGFIFA2022B.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import com.umg.edu.UMGFIFA2022B.services.dto.UserlnDTO;
 @Service
 public class UserService {
 
-	
+	@Autowired
 	private final UserRepository repository;
 	private final UserInDTOoUseEntity mapper;
 
@@ -34,5 +35,11 @@ public class UserService {
 	return this.repository.findAll();
 	}
 	
+    //Buscar por Id Usuario
+    public UserEntity ObtenerUsuario(Long Id) {
+    	return this.repository.findById(Id).get();
+    }
+
+    
 	
 }

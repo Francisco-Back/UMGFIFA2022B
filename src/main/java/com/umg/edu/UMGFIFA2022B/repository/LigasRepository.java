@@ -1,12 +1,13 @@
 package com.umg.edu.UMGFIFA2022B.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import com.umg.edu.UMGFIFA2022B.entity.LigasEntity;
 
 
-
-public interface LigasRepository extends CrudRepository<LigasEntity, Long>{
+@Repository
+public interface LigasRepository extends JpaRepository<LigasEntity, Long>{
 	
 	 
 }

@@ -3,10 +3,10 @@ package com.umg.edu.UMGFIFA2022B.entity;
 
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.*;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 import lombok.Data;
 
@@ -26,7 +26,10 @@ public  class UserEntity {
 	private String Password;
 	//private String Token;
 	private LocalDateTime createDate;
-
+	
+	  /* @OneToMany(mappedBy = "Usuarios", cascade = CascadeType.ALL,orphanRemoval = true)
+		private  Set<LigasEntity> LigasUsuarios = new HashSet<>();*/
+	 
 	}
 
 	

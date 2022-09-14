@@ -3,7 +3,7 @@ package com.umg.edu.UMGFIFA2022B.controller;
 import java.util.List;
 import java.util.Optional;
 
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.umg.edu.UMGFIFA2022B.entity.LigasEntity;
-import com.umg.edu.UMGFIFA2022B.entity.UserEntity;
 import com.umg.edu.UMGFIFA2022B.services.LigaServices;
 import com.umg.edu.UMGFIFA2022B.services.dto.LigasInDTO;
 
 
 @RestController
-@RequestMapping("/Ligas")
+@RequestMapping("/api/Ligas")
 public class LigasController {
 	
+@Autowired	
 private final LigaServices ligaServices;
 
 	
@@ -27,11 +27,14 @@ private final LigaServices ligaServices;
 		this.ligaServices = ligaServices;
 	}
 	
-	@PostMapping
-	public LigasEntity createLigas(@RequestBody  LigasInDTO ligasInDTO  ) {
-		return ligaServices.createLiga(ligasInDTO);
-	}
 	
+	
+	@PostMapping("/{UserID}")
+	public LigasEntity createLigas(@PathVariable(value = "UserID") Long UserID,@RequestBody  LigasInDTO ligasInDTO) {
+		
+		return ligaServices.createLiga(UserID, ligasInDTO);
+	}
+
 	
 	@GetMapping
 	public List<LigasEntity> setLiga() {
@@ -39,9 +42,9 @@ private final LigaServices ligaServices;
 
 	}
 	
-	@GetMapping("/LigasUser/{objetoUser}")
-	public Optional<LigasEntity> LigasUser(@PathVariable("objetoUser") UserEntity  UserID) {
-		return this.ligaServices.findAllByLigas(UserID);
+	@GetMapping("/LigasUser/{IDLigas}")
+	public Optional<LigasEntity> LigasUser(@PathVariable("IDLigas") Long  LigasID) {
+		return this.ligaServices.findAllByLigas(LigasID);
 
 	}
 }
