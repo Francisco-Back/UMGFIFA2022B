@@ -8,6 +8,8 @@ import com.umg.edu.UMGFIFA2022B.entity.LigasEntity;
 
 @Repository
 public interface LigasRepository extends JpaRepository<LigasEntity, Long>{
+
+	LigasEntity findByUserEntity_id(Long id);
 	
-	 
+	  
 }

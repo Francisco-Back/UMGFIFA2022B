@@ -43,9 +43,17 @@ private final LigaServices ligaServices;
 	}
 	
 	@GetMapping("/LigasUser/{IDLigas}")
-	public Optional<LigasEntity> LigasUser(@PathVariable("IDLigas") Long  LigasID) {
+	public Optional<LigasEntity> findAllByLigas(@PathVariable("IDLigas") Long  LigasID) {
 		return this.ligaServices.findAllByLigas(LigasID);
 
 	}
+	
+	@GetMapping("/UserT/{UserID}")
+	public LigasEntity LigaUser(@PathVariable("UserID") Long  UserID) {
+		return this.ligaServices.LigaUser(UserID);
+
+	}
+	
+	
 }
 

@@ -3,8 +3,6 @@ package com.umg.edu.UMGFIFA2022B.entity;
 
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.*;
 

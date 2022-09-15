@@ -32,7 +32,7 @@ public class UserService {
 	}
 	
     public List<UserEntity> SetUser(){
-	return this.repository.findAll();
+	return (List<UserEntity>) this.repository.findAll();
 	}
 	
     //Buscar por Id Usuario
@@ -40,6 +40,14 @@ public class UserService {
     	return this.repository.findById(Id).get();
     }
 
+
+
+
+	/*public UserEntity ObtenerCorreo(String correo) {
+		
+		return this.repository.findByCorreo(correo);
+	}
+    */
     
 	
 }

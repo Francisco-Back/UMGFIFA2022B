@@ -7,7 +7,11 @@ import com.umg.edu.UMGFIFA2022B.entity.UserEntity;
 
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, Long>{
-     
-	 
+
+
+//	UserEntity findByCorreo(String correo);
+	
+       
 }
 
+ 
