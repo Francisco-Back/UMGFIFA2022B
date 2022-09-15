@@ -1,8 +1,8 @@
 package com.umg.edu.UMGFIFA2022B.security.dto;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotBlank;
 
+import javax.validation.constraints.Email;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -16,8 +16,6 @@ public class NuevoUsuario {
     private String email;
     @NotBlank
     private String password;
-    @NotBlank
-    private String avatar;
     private Set<String> roles = new HashSet<>();
 
     public String getNombre() {
@@ -50,14 +48,6 @@ public class NuevoUsuario {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
     }
 
     public Set<String> getRoles() {

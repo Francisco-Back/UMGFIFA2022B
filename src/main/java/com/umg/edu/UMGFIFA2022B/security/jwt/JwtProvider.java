@@ -1,6 +1,7 @@
 package com.umg.edu.UMGFIFA2022B.security.jwt;
 
 import com.umg.edu.UMGFIFA2022B.security.entity.UsuarioPrincipal;
+
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +27,7 @@ public class JwtProvider {
         return Jwts.builder().setSubject(usuarioPrincipal.getUsername())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(new Date().getTime() + expiration * 1000))
-                .signWith(SignatureAlgorithm.HS512, secret)
+                .signWith(SignatureAlgorithm.ES512, secret)
                 .compact();
     }
 

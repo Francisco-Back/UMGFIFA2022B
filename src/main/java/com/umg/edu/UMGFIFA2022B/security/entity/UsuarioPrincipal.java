@@ -12,15 +12,14 @@ public class UsuarioPrincipal implements UserDetails {
     private String nombre;
     private String nombreUsuario;
     private String email;
-    private String contrasena;
+    private String password;
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UsuarioPrincipal(String nombre, String nombreUsuario, String email,
-                            String contrasena, Collection<? extends GrantedAuthority> authorities) {
+    public UsuarioPrincipal(String nombre, String nombreUsuario, String email, String password, Collection<? extends GrantedAuthority> authorities) {
         this.nombre = nombre;
         this.nombreUsuario = nombreUsuario;
         this.email = email;
-        this.contrasena = contrasena;
+        this.password = password;
         this.authorities = authorities;
     }
 
@@ -28,18 +27,17 @@ public class UsuarioPrincipal implements UserDetails {
         List<GrantedAuthority> authorities =
                 usuario.getRoles().stream().map(rol -> new SimpleGrantedAuthority(rol
                         .getRolNombre().name())).collect(Collectors.toList());
-        return new UsuarioPrincipal(usuario.getNombre(), usuario.getNombreUsuario(), usuario.getEmail(),
-                usuario.getPassword(), authorities);
+        return new UsuarioPrincipal(usuario.getNombre(), usuario.getNombreUsuario(), usuario.getEmail(), usuario.getPassword(), authorities);
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return authorities;
     }
 
     @Override
     public String getPassword() {
-        return contrasena;
+        return password;
     }
 
     @Override
