@@ -2,6 +2,7 @@ package com.umg.edu.UMGFIFA2022B.entity;
 
 
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -28,9 +29,13 @@ public class LigasEntity {
    @JsonProperty(access = Access.WRITE_ONLY)
    private UserEntity userEntity;
    
+   @Column(name="NombreLiga")
    private String NombreLiga;
+   @Column(name="Fecha_Inicio")
    private String Fecha_Inicio; 
+   @Column(name="Fecha_Final")
    private String Fecha_Final;
+   @Column(name="Cant_Equipos")
    private int Cant_Equipos;
    
    /*@OneToMany(mappedBy = "Ligas", cascade = CascadeType.ALL,orphanRemoval = true)

@@ -1,24 +1,20 @@
 package com.umg.edu.UMGFIFA2022B.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-
-import java.util.List;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.umg.edu.UMGFIFA2022B.entity.UserEntity;
 import com.umg.edu.UMGFIFA2022B.services.UserService;
 import com.umg.edu.UMGFIFA2022B.services.dto.UserlnDTO;
 
 @RestController
 @RequestMapping("/api/User")
 public class UserController {
-
 	@Autowired	
 	private final UserService userservice;
 
@@ -28,20 +24,16 @@ public class UserController {
 	}
 	
 	@PostMapping
-	public UserEntity createUser(@RequestBody  UserlnDTO userlnDTO  ) {
-		return userservice.createUser(userlnDTO);
+	public ResponseEntity<?> createUser(@RequestBody  UserlnDTO userlnDTO  ) {
+		return new ResponseEntity<>(userservice.createUser(userlnDTO),HttpStatus.CREATED);
 	}
 	
 	
 	@GetMapping
-	public List<UserEntity> setUser() {
-		return this.userservice.SetUser();
+	public ResponseEntity<?> setUser() {
+		return ResponseEntity.ok(userservice.SetUser());
 	}
 	
-	/*@GetMapping("/UserCorreo/{CorreoUser}")
-	public UserEntity ObtenerCorreo(@PathVariable("CorreoUser") String Correo) {
-		return this.userservice.ObtenerCorreo(Correo);
-	}*/
 	
 	
 	
