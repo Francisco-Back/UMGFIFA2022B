@@ -3,6 +3,7 @@ package com.umg.edu.UMGFIFA2022B.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +16,7 @@ import com.umg.edu.UMGFIFA2022B.services.dto.UserlnDTO;
 
 @RestController
 @RequestMapping("/api/User")
+@CrossOrigin(origins = "*")
 public class UserController {
 	@Autowired	
 	private final UserService userservice;
