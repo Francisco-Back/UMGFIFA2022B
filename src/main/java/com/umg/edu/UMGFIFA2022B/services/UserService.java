@@ -41,16 +41,6 @@ public class UserService implements ImUserService {
     	return this.repository.findById(Id).get();
     }
 
-	@Override
-	public List<UserEntity> Correodd(String c) throws Exception{
-		try {
-			List<UserEntity> e=repository.findByCorreo(c);
-			return e;
-		}catch (Exception exception) {
-			throw new Exception(exception.getMessage());
-		}
-		
-	}
 
 
     

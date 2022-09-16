@@ -13,8 +13,6 @@ public interface ImUserService {
 
 	List<UserEntity> SetUser();
 
-	List<UserEntity> Correodd(String c) throws Exception;
-
 
 
 }
