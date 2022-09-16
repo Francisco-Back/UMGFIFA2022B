@@ -12,11 +12,9 @@ import com.umg.edu.UMGFIFA2022B.entity.UserEntity;
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, Long>{
 	
-	
-	
-	
 	@Query(value = "SELECT * FROM usuarios WHERE correo =:correo", nativeQuery = true)
 	public List<UserEntity> findByCorreo(String correo);
+	
        
 }
 
