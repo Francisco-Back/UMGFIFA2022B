@@ -73,5 +73,13 @@ public class NuevoUsuario {
 	public void setAvatar(String avatar) {
 		Avatar = avatar;
 	}
+
+	public LocalDateTime getCreateDate(LocalDateTime localDateTime) {
+		return createDate;
+	}
+
+	public void setCreateDate(LocalDateTime createDate) {
+		this.createDate = createDate;
+	}
     
 }
