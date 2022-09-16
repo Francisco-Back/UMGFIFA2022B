@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.umg.edu.UMGFIFA2022B.services.UserService;
 import com.umg.edu.UMGFIFA2022B.services.dto.UserlnDTO;
 
-//@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "/**")
 @RestController
 @RequestMapping("/api/User")
 public class UserController {
