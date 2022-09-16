@@ -3,6 +3,7 @@ package com.umg.edu.UMGFIFA2022B.repository;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -17,7 +18,9 @@ public interface UserRepository extends JpaRepository<UserEntity, Long>{
 	
 	@Query(value = "SELECT * FROM usuarios WHERE correo =:correo", nativeQuery = true)
 	public List<UserEntity> findByCorreo(String correo);
-       
+	Optional<UserEntity> findByNombreUsuario(String nombreUsuario);
+    boolean existsByNombreUsuario(String nombreUsuario);
+    boolean existsByEmail(String Email);
 }
 
  

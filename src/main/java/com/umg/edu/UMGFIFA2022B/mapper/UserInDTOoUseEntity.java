@@ -16,6 +16,7 @@ public class UserInDTOoUseEntity implements IMapper<UserlnDTO, UserEntity> {
 		
 	UserEntity UserE=new UserEntity();
 	UserE.setNombre(in.getNombre());
+	UserE.setNombreUsuario(in.getNombreUser());
 	UserE.setCorreo(in.getCorreo());
 	UserE.setAvatar(in.getAvatar());
 	UserE.setPassword(in.getPassword());

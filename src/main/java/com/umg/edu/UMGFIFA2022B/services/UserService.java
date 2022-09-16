@@ -2,6 +2,8 @@ package com.umg.edu.UMGFIFA2022B.services;
 
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
+
 import com.umg.edu.UMGFIFA2022B.entity.UserEntity;
 import com.umg.edu.UMGFIFA2022B.mapper.UserInDTOoUseEntity;
 import com.umg.edu.UMGFIFA2022B.repository.UserRepository;
@@ -16,14 +18,16 @@ public class UserService implements ImUserService {
 	private final UserInDTOoUseEntity mapper;
 
 	
-	
-	public UserService(UserRepository repository, UserInDTOoUseEntity mapper) {
+
+
+
+public UserService(UserRepository repository, UserInDTOoUseEntity mapper) {
+
 		this.repository = repository;
 		this.mapper = mapper;
 	}
 
-
-// Regresa el Objeto UserEntity 
+	// Regresa el Objeto UserEntity 
 	@Override
 	public UserEntity createUser(UserlnDTO user) {
 		 UserEntity UserE= mapper.map(user);
@@ -51,6 +55,21 @@ public class UserService implements ImUserService {
 		}
 		
 	}
+	  public Optional<UserEntity> getByNombreUsuario(String nombreUsuario){
+	        return repository.findByNombreUsuario(nombreUsuario);
+	    }
+
+	    public boolean existsByNombreUsuario(String nombreUsuario){
+	        return repository.existsByNombreUsuario(nombreUsuario);
+	    }
+
+	    public boolean existsByEmail(String email){
+	        return repository.existsByEmail(email);
+	    }
+
+	    public void save(UserEntity usuario){
+	    	repository.save(usuario);
+	    }
 
 
     
