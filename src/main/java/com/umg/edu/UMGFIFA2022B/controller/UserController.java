@@ -26,7 +26,6 @@ import com.umg.edu.UMGFIFA2022B.services.dto.UserlnDTO;
 
 @RestController
 @RequestMapping("/api/User")
-@CrossOrigin(origins = "*")
 public class UserController {
 	@Autowired	
 	private final UserService userservice;
@@ -36,23 +35,23 @@ public class UserController {
 	public UserController(UserService userservice) {
 		this.userservice = userservice;
 	}
-	//@CrossOrigin(origins = "*")
+	@CrossOrigin(origins = "*")
 	@PostMapping
 	public ResponseEntity<?> createUser(@RequestBody  UserlnDTO userlnDTO  ) {
 		return new ResponseEntity<>(userservice.createUser(userlnDTO),HttpStatus.CREATED);
 	}
-
+	@CrossOrigin(origins = "*")
 	@PostMapping("/Subir")
 	public ResponseEntity<Map> upload(@RequestParam MultipartFile multipartFile) throws IOException{
 		Map result = cloudinaryService.upload(multipartFile);
 		return new ResponseEntity(result,HttpStatus.OK);
 	}
-	
+	@CrossOrigin(origins = "*")
 	@GetMapping
 	public ResponseEntity<?> setUser() {
 		return ResponseEntity.ok(userservice.SetUser());
 	}
-	
+	@CrossOrigin(origins = "*")
 	@GetMapping("/search/{CUser}")
 	public ResponseEntity<?> SearchEmail(@PathVariable("CUser") String CUser) throws Exception{
 		return ResponseEntity.status(HttpStatus.OK).body(userservice.Correodd(CUser));
