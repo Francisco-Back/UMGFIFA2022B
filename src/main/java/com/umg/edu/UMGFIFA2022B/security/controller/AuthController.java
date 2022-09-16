@@ -1,6 +1,6 @@
 package com.umg.edu.UMGFIFA2022B.security.controller;
 
-import com.umg.edu.UMGFIFA2022B.dto.Mensaje;
+import com.umg.edu.UMGFIFA2022B.security.dto.Mensaje;
 import com.umg.edu.UMGFIFA2022B.security.dto.JwtDto;
 import com.umg.edu.UMGFIFA2022B.security.dto.LoginUsuario;
 import com.umg.edu.UMGFIFA2022B.security.dto.NuevoUsuario;
