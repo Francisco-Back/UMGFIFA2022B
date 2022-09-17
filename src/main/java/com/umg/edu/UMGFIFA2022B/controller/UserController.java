@@ -16,6 +16,7 @@ import com.umg.edu.UMGFIFA2022B.services.dto.UserlnDTO;
 
 @RestController
 @RequestMapping("/User")
+@CrossOrigin(origins = "*")
 public class UserController {
 	@Autowired	
 	private final UserService userservice;
@@ -24,7 +25,6 @@ public class UserController {
 	public UserController(UserService userservice) {
 		this.userservice = userservice;
 	}
-	@CrossOrigin(origins = "*")
 	@PostMapping
 	public ResponseEntity<?> createUser(@RequestBody  UserlnDTO userlnDTO  ) {
 		return new ResponseEntity<>(userservice.createUser(userlnDTO),HttpStatus.CREATED);
