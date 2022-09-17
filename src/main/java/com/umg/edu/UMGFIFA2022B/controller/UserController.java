@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.umg.edu.UMGFIFA2022B.services.UserService;
 import com.umg.edu.UMGFIFA2022B.services.dto.UserlnDTO;
 
+@CrossOrigin(origins = "/**")
 @RestController
 @RequestMapping("/api/User")
 public class UserController {
@@ -24,7 +25,6 @@ public class UserController {
 	public UserController(UserService userservice) {
 		this.userservice = userservice;
 	}
-	@CrossOrigin(origins = "*")
 	@PostMapping
 	public ResponseEntity<?> createUser(@RequestBody  UserlnDTO userlnDTO  ) {
 		return new ResponseEntity<>(userservice.createUser(userlnDTO),HttpStatus.CREATED);
