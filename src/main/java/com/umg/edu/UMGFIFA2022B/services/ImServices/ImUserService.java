@@ -8,8 +8,6 @@ import com.umg.edu.UMGFIFA2022B.services.dto.UserlnDTO;
 
 public interface ImUserService {
 
-	UserEntity createUser(UserlnDTO user);
-
 	UserEntity ObtenerUsuario(Long Id);
 
 	List<UserEntity> SetUser();
@@ -22,9 +20,9 @@ public interface ImUserService {
 
 	boolean existsByEmail(String email);
 
-	void save(UserEntity usuario);
-
 	List<UserEntity> findByCorreo(String Correo);
+
+	UserEntity createUser(UserEntity user);
 
 
 

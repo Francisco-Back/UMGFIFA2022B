@@ -1,9 +1,9 @@
 package com.umg.edu.UMGFIFA2022B.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import java.util.Optional;
-
 import com.umg.edu.UMGFIFA2022B.entity.UserEntity;
 import com.umg.edu.UMGFIFA2022B.mapper.UserInDTOoUseEntity;
 import com.umg.edu.UMGFIFA2022B.repository.UserRepository;
@@ -14,21 +14,24 @@ import com.umg.edu.UMGFIFA2022B.services.dto.UserlnDTO;
 @Service
 public class UserService implements ImUserService {
 
-	private final UserRepository repository;
-	private final UserInDTOoUseEntity mapper;
-
-public UserService(UserRepository repository, UserInDTOoUseEntity mapper) {
-
-		this.repository = repository;
-		this.mapper = mapper;
-	}
+	
+	@Autowired
+	private  UserRepository repository;
+	private  UserInDTOoUseEntity mapper;
+    private  PasswordEncoder passwordencoder;
 
 	// Regresa el Objeto UserEntity 
+
+
 	@Override
-	public UserEntity createUser(UserlnDTO user) {
-		 UserEntity UserE= mapper.map(user);
-		return this.repository.save(UserE);	
+	public UserEntity createUser(UserEntity user) {	
+		user.setPassword(passwordencoder.encode(user.getPassword()));
+		// UserE.setRoles(RolNombre.ROLE_USER);
+		return this.repository.save(user);	
 	}
+	
+	
+	
 	
 	@Override
     public List<UserEntity> SetUser(){
@@ -58,11 +61,6 @@ public UserService(UserRepository repository, UserInDTOoUseEntity mapper) {
 	    }
 
 	@Override
-	    public void save(UserEntity usuario){
-	    	repository.save(usuario);
-	    }
-
-	@Override
 	public List<UserEntity> getByNombreUsuario(String nombreUsuario) {
 		
 		return this.getByNombreUsuario(nombreUsuario);
@@ -77,6 +75,10 @@ public UserService(UserRepository repository, UserInDTOoUseEntity mapper) {
 	public List<UserEntity> findByCorreo(String Correo){
 		return this.repository.findByCorreo(Correo);
 	}
+
+
+
+
 
 
     

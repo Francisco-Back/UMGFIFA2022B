@@ -24,10 +24,11 @@ public class UserController {
 		this.userservice = userservice;
 	}
 	
-	@PostMapping
+	/*@PostMapping
 	public ResponseEntity<?> createUser(@RequestBody  UserlnDTO userlnDTO  ) {
+		
 		return new ResponseEntity<>(userservice.createUser(userlnDTO),HttpStatus.CREATED);
-	}
+	}*/
 	
 	
 	@GetMapping
