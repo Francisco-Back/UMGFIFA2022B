@@ -2,7 +2,7 @@ package com.umg.edu.UMGFIFA2022B.services.dto;
 
 
 
-import java.util.HashSet;
+
 import java.util.Set;
 
 import com.umg.edu.UMGFIFA2022B.TSecurity.Entity.Rol;
@@ -17,7 +17,7 @@ public  class UserlnDTO {
 	    private String Correo;
 		private String Avatar;
 		private String Password;
-		 private Set<Rol> roles = new HashSet<>();
+	private Set<Rol> roles ;
 	
 }
 

@@ -21,6 +21,7 @@ public class UserInDTOoUseEntity implements IMapper<UserlnDTO, UserEntity> {
 	UserE.setAvatar(in.getAvatar());
 	UserE.setPassword(in.getPassword());
 	UserE.setCreateDate(LocalDateTime.now());
+	UserE.setRoles(in.getRoles());	
 		return UserE;
 	}
 

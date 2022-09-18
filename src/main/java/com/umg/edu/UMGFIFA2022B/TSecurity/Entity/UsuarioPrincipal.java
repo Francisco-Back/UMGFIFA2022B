@@ -12,8 +12,6 @@ import java.util.stream.Collectors;
 
 public class UsuarioPrincipal implements UserDetails {
 
-	//Quitar si no funciona
-	private static final long serialVersionUID = 1L;
 	
 	
 	private String nombre;

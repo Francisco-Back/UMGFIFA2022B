@@ -1,6 +1,7 @@
 package com.umg.edu.UMGFIFA2022B.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -48,16 +49,16 @@ public class AuthController {
 
     @Autowired
     JwtProvider jwtProvider;
-    
+    @Autowired
     UserInDTOoUseEntity mapper;
 
     @PostMapping("/nuevo")
-    public ResponseEntity<?> nuevo(@RequestBody UserlnDTO nuevoUsuario, BindingResult bindingResult){
+    public ResponseEntity<?> nuevo(@Valid @RequestBody UserlnDTO nuevoUsuario, BindingResult bindingResult){
         if(bindingResult.hasErrors())
             return new ResponseEntity(new Mensaje("campos mal puestos o email inválido"), HttpStatus.BAD_REQUEST);
         if(usuarioService.existsByNombreUsuario(nuevoUsuario.getNombreUser()))
             return new ResponseEntity(new Mensaje("ese nombre ya existe"), HttpStatus.BAD_REQUEST);
-       if(usuarioService.existsByEmail(nuevoUsuario.getCorreo()))
+       if(usuarioService.existsByCorreo(nuevoUsuario.getCorreo()))
            return new ResponseEntity(new Mensaje("ese email ya existe"), HttpStatus.BAD_REQUEST);
         
         
@@ -68,8 +69,9 @@ public class AuthController {
         Set<Rol> roles = new HashSet<>();
         
         roles.add(rolService.getByRolNombre(RolNombre.ROLE_USER).get());
-        if(nuevoUsuario.getRoles().contains("admin"))
+        if(nuevoUsuario.getRoles().contains("admin")) {
             roles.add(rolService.getByRolNombre(RolNombre.ROLE_ADMIN).get());
+        }
         UserE.setRoles(roles);
         usuarioService.createUser(UserE);
         return new ResponseEntity(new Mensaje("usuario guardado"), HttpStatus.CREATED);

@@ -67,13 +67,14 @@ public class UserService implements ImUserService {
 	}
 
 	@Override
-	public boolean existsByEmail(String email) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	@Override
 	public List<UserEntity> findByCorreo(String Correo){
 		return this.repository.findByCorreo(Correo);
+	}
+
+    @Override
+	public boolean existsByCorreo(String correo) {
+
+		return this.repository.existsByCorreo(correo);
 	}
 
 

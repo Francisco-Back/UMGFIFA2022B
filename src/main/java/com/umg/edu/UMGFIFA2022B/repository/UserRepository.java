@@ -21,8 +21,10 @@ public interface UserRepository extends JpaRepository<UserEntity, Long>{
 	@Query(value = "SELECT * FROM usuarios WHERE correo =:nombreUsuario", nativeQuery = true)
 	List<UserEntity> findBynombreUsuario(String nombreUsuario);
 	
-	@Query(value = "SELECT nombre_usuario FROM usuarios WHERE nombre_usuario=:nombreUsuario", nativeQuery = true)
+	//@Query(value = "SELECT nombre_usuario FROM usuarios WHERE nombre_usuario=:nombreUsuario", nativeQuery = true)
    public boolean existsBynombreUsuario(String nombreUsuario);
+   
+   public boolean existsByCorreo(String Correo);
 
 }
 

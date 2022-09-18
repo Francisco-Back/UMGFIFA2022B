@@ -18,11 +18,12 @@ public interface ImUserService {
 
 	boolean existsByNombreUsuario(String nombreUsuario);
 
-	boolean existsByEmail(String email);
-
 	List<UserEntity> findByCorreo(String Correo);
 
 	UserEntity createUser(UserEntity user);
+
+	boolean existsByCorreo(String correo);
+
 
 
 
