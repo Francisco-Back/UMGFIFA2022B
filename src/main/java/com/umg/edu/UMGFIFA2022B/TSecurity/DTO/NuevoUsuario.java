@@ -16,11 +16,11 @@ public class NuevoUsuario {
     @NotBlank
     private String nombreUsuario;
     @Email
-    private String email;
+    private String Correo;
     @NotBlank
 	private String Avatar;
     @NotBlank
-    private String password;
+    private String Password;
     @NotBlank
     private LocalDateTime createDate;
     
@@ -43,19 +43,19 @@ public class NuevoUsuario {
     }
 
     public String getEmail() {
-        return email;
+        return Correo;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmail(String Correo) {
+        this.Correo = Correo;
     }
 
     public String getPassword() {
-        return password;
+        return Password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassword(String Password) {
+        this.Password = Password;
     }
 
     public Set<String> getRoles() {

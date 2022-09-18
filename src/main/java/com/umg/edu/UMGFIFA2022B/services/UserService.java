@@ -17,10 +17,6 @@ public class UserService implements ImUserService {
 	private final UserRepository repository;
 	private final UserInDTOoUseEntity mapper;
 
-	
-
-
-
 public UserService(UserRepository repository, UserInDTOoUseEntity mapper) {
 
 		this.repository = repository;
@@ -63,8 +59,8 @@ public UserService(UserRepository repository, UserInDTOoUseEntity mapper) {
 	        return repository.existsByNombreUsuario(nombreUsuario);
 	    }
 
-	    public boolean existsByEmail(String email){
-	        return repository.existsByEmail(email);
+	    public boolean existsByCorreo(String Correo){
+	        return repository.existsByCorreo(Correo);
 	    }
 
 	    public void save(UserEntity usuario){

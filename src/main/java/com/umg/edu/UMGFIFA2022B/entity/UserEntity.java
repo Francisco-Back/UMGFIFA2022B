@@ -27,8 +27,8 @@ public  class UserEntity {
 @NotNull
 @Column(unique = true)
 private String nombreUsuario;
-@Column(name="Correo")
-    private String Correo;
+@Column(name="correo")
+    private String correo;
 @Column(name="Avatar")
 	private String Avatar;
 @Column(name="Password")

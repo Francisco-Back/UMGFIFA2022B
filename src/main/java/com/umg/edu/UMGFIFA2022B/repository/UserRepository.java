@@ -13,14 +13,11 @@ import com.umg.edu.UMGFIFA2022B.entity.UserEntity;
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, Long>{
 	
-	
-	
-	
-	@Query(value = "SELECT * FROM usuarios WHERE correo =:correo", nativeQuery = true)
-	public List<UserEntity> findByCorreo(String correo);
+	@Query(value = "SELECT * FROM usuarios WHERE Correo =:Correo", nativeQuery = true)
+	public List<UserEntity> findByCorreo(String Correo);
 	Optional<UserEntity> findByNombreUsuario(String nombreUsuario);
     boolean existsByNombreUsuario(String nombreUsuario);
-    boolean existsByEmail(String Email);
+    boolean existsByCorreo(String Correo);
 }
 
  
