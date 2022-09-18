@@ -56,24 +56,7 @@ public UserService(UserRepository repository, UserInDTOoUseEntity mapper) {
 	    public boolean existsByNombreUsuario(String nombreUsuario){
 	        return repository.existsBynombreUsuario(nombreUsuario);
 	    }
-<<<<<<< Updated upstream
 
-	    public boolean existsByCorreo(String Correo){
-	        return repository.existsByCorreo(Correo);
-=======
-	@Override
-	    public boolean existsByEmail(String email){
-	        boolean Verifi=repository.existsByCorreo(email);
-	        	if(Verifi==true) {
-	        		return Verifi;
-	        	}else {
-	        		Verifi=false;
-	        		return Verifi;
-	        	}
-	        		
-	        		
->>>>>>> Stashed changes
-	    }
 	@Override
 	    public void save(UserEntity usuario){
 	    	repository.save(usuario);
@@ -83,6 +66,16 @@ public UserService(UserRepository repository, UserInDTOoUseEntity mapper) {
 	public List<UserEntity> getByNombreUsuario(String nombreUsuario) {
 		
 		return this.getByNombreUsuario(nombreUsuario);
+	}
+
+	@Override
+	public boolean existsByEmail(String email) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public List<UserEntity> findByCorreo(String Correo){
+		return this.repository.findByCorreo(Correo);
 	}
 
 

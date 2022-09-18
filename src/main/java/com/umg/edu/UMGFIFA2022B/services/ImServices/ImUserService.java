@@ -24,6 +24,8 @@ public interface ImUserService {
 
 	void save(UserEntity usuario);
 
+	List<UserEntity> findByCorreo(String Correo);
+
 
 
 }
