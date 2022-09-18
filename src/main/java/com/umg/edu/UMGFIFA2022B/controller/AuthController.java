@@ -60,11 +60,8 @@ public class AuthController {
             return new ResponseEntity(new Mensaje("ese nombre ya existe"), HttpStatus.BAD_REQUEST);
        if(usuarioService.existsByCorreo(nuevoUsuario.getCorreo()))
            return new ResponseEntity(new Mensaje("ese email ya existe"), HttpStatus.BAD_REQUEST);
-        
-        
+     
              	 UserEntity UserE= mapper.map(nuevoUsuario);
-   		
-        
         
         Set<Rol> roles = new HashSet<>();
         
@@ -75,6 +72,7 @@ public class AuthController {
         UserE.setRoles(roles);
         usuarioService.createUser(UserE);
         return new ResponseEntity(new Mensaje("usuario guardado"), HttpStatus.CREATED);
+        
     }
 
     @PostMapping("/login")

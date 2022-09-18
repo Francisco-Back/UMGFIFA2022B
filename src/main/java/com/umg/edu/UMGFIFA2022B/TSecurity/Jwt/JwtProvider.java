@@ -52,7 +52,7 @@ public class JwtProvider {
                 .compact();
     }
 
-    public boolean validarToken(String token){
+    /*public boolean validarToken(String token){
         try {
             Jws<Claims> claims = Jwts
                     .parserBuilder().setSigningKey(this.secretKey).build()
@@ -64,7 +64,7 @@ public class JwtProvider {
             logger.error("Token JWT inválido {}", e.getMessage());
         }
         return false;
-    }
+    }*/
 
     public Authentication getAuthentication(String token){
         Claims claims = Jwts.parserBuilder().setSigningKey(this.secretKey).build().parseClaimsJws(token).getBody();
@@ -79,15 +79,18 @@ public class JwtProvider {
         return new UsernamePasswordAuthenticationToken(principal, token, authorities);
     }
     
-    /*
+  
     public String getNombreUsuarioFromToken(String token){
         return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody().getSubject();
     }
 
-
     public boolean validateToken(String token){
         try {
-            Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
+        	Jws<Claims> claims = Jwts
+                    .parserBuilder().setSigningKey(this.secretKey).build()
+                    .parseClaimsJws(token);
+        	  // parseClaimsJws verificará la fecha de expiración
+            logger.info("fecha de expiración: {}", claims.getBody().getExpiration());
             return true;
         }catch (MalformedJwtException e){
             logger.error("token mal formado");
@@ -102,5 +105,5 @@ public class JwtProvider {
         }
         return false;
     }
-    */
+    
 }

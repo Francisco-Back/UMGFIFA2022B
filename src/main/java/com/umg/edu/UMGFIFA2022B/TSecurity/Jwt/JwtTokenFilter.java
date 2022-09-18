@@ -33,7 +33,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
         try {
             String token = getTokenFromRequest(request);
             // Comprobamos si el token NO viene vacío o es válido
-            if(token != null && jwtProvider.validarToken(token)){
+            if(token != null && jwtProvider.validateToken(token)){
                 // Obtenemos la autenticación a partir del token
                 Authentication auth = jwtProvider.getAuthentication(token);
 
