@@ -36,6 +36,7 @@ private String nombreUsuario;
 	//private String Token;
 @Column(name="createDate")
 	private LocalDateTime createDate;
+
 @NotNull
 @ManyToMany(fetch = FetchType.EAGER)
 @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "usuario_id"),

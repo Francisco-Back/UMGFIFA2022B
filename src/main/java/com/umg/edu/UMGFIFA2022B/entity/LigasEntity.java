@@ -38,8 +38,4 @@ public class LigasEntity {
    @Column(name="Cant_Equipos")
    private int Cant_Equipos;
    
-   /*@OneToMany(mappedBy = "Ligas", cascade = CascadeType.ALL,orphanRemoval = true)
-	private  Set<UserEntity> UsuariosLigas = new HashSet<>();
-*/
-
 }

@@ -46,8 +46,6 @@ public class LigaServices  implements ImLigasServices{
 	@Override
 	public LigasEntity createLiga(Long UserID,LigasInDTO Ligasuser) {
 		 LigasEntity LigasE= LigaMapper.map(Ligasuser);
-		/* UserEntity e= userrepository.findById(UserID)
-				 .orElseThrow(() -> new ResourceNotFoundException("Usuarios", "id", UserID)); */
 		 UserEntity e= userrepository.findById(UserID)
 				 .orElseThrow(); 
 		 LigasE.setUserEntity(e);
