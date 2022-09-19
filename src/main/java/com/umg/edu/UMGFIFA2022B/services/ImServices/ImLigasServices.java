@@ -20,7 +20,7 @@ public interface ImLigasServices  {
 
 	void EliminarLiga(Long Id);
 
-	LigasEntity LigaUser(Long Id);
+	List<LigasEntity> LigaUser(Long Id);
 
 	List<LigasInDTO> findAll();
 	

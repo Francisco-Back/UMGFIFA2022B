@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
@@ -23,10 +25,10 @@ public class LigasEntity {
    @Id
    @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-   
+   @JsonBackReference
    @ManyToOne(fetch = FetchType.LAZY, optional = false)
    @JoinColumn(name = "UserEntity_id", nullable = false)
-   @JsonProperty(access = Access.WRITE_ONLY)
+   @JsonProperty(access = Access.AUTO)
    private UserEntity userEntity;
    
    @Column(name="NombreLiga")

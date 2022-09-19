@@ -1,5 +1,6 @@
 package com.umg.edu.UMGFIFA2022B.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,9 +53,10 @@ private final LigaServices ligaServices;
 	}
 	
 	@GetMapping("/UserT/{UserID}")
-	public LigasEntity LigaUser(@PathVariable("UserID") Long  UserID) {
+	public List<LigasEntity> LigaUser(@PathVariable("UserID") Long  UserID) {
+		
 		return this.ligaServices.LigaUser(UserID);
-
+ 
 	}
 	
 	@DeleteMapping("/Delete/{IdLiga}")
