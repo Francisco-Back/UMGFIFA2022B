@@ -67,10 +67,12 @@ public LigasEntity ObtenerLiga(Long Id) {
 public void EliminarLiga(Long Id) {
 	this.ligasRepository.deleteById(Id);
 }
+
 	@Override
-public LigasEntity LigaUser(Long Id) {
-	return this.ligasRepository.findByusuario_id(Id);
+public  List<LigasEntity> LigaUser(Long Id) {
+	return this.ligasRepository.searhusuario_id(Id);
 }
+	
 
 
 	

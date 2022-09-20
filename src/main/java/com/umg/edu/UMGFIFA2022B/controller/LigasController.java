@@ -1,5 +1,6 @@
 package com.umg.edu.UMGFIFA2022B.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,12 +45,6 @@ private  LigaServices ligaServices;
 
 	}
 	
-	@GetMapping("/UserT/{UserID}")
-	public LigasEntity LigaUser(@PathVariable("UserID") Long  UserID) {
-		return this.ligaServices.LigaUser(UserID);
-
-	}
-	
 	@DeleteMapping("/Delete/{IdLiga}")
 	public ResponseEntity<?> EliminarLiga(@PathVariable Long IdLiga){
 		
@@ -58,6 +53,12 @@ private  LigaServices ligaServices;
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
+	@GetMapping("/UserT/{UserID}")
+	public ResponseEntity<?> LigaUser(@PathVariable("UserID") Long  UserID) {
+		return  new ResponseEntity<>(this.ligaServices.LigaUser(UserID), HttpStatus.OK);
+				
+	
+	}
 	
 }
 

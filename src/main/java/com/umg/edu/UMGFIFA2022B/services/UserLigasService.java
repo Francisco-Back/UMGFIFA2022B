@@ -4,6 +4,8 @@ package com.umg.edu.UMGFIFA2022B.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.umg.edu.UMGFIFA2022B.TSecurity.Entity.Usuario;
+import com.umg.edu.UMGFIFA2022B.TSecurity.Repository.UsuarioRepository;
 import com.umg.edu.UMGFIFA2022B.entity.LigasEntity;
 import com.umg.edu.UMGFIFA2022B.entity.UserLigaEntity;
 import com.umg.edu.UMGFIFA2022B.mapper.UserLIgasInDTOoUserLigasEntity;
@@ -22,6 +24,9 @@ public class UserLigasService implements  ImUserLigas{
 	@Autowired
     private  UserLIgasRepository UsLigasRepository;
     
+	@Autowired
+	private UsuarioRepository usuarioRepository;
+    
 	private   UserLIgasInDTOoUserLigasEntity USLmapper;
 
 	
@@ -30,12 +35,12 @@ public class UserLigasService implements  ImUserLigas{
 	public UserLigaEntity UnionLiga(Long UserID, Long LigasID,UserLigasDTO dto) {
 		
 	    UserLigaEntity LigasE= USLmapper.map(dto);
-		/* UserEntity e= userrepository.findById(UserID)
+		 Usuario e= usuarioRepository.findById(UserID)
 				 .orElseThrow(); 
-		 LigasE.setUserEntity(e);;
+		 LigasE.setUsuario(e);;
 		 LigasEntity l=ligasRepository.findById(LigasID)
 				 .orElseThrow();
-		 LigasE.setLigasEntity(l);*/
+		 LigasE.setLigasEntity(l);
 		 
 		return this.UsLigasRepository.save(LigasE);
 	}

@@ -14,8 +14,6 @@ public class UserLIgasInDTOoUserLigasEntity implements IMapper<UserLigasDTO, Use
 	public UserLigaEntity map(UserLigasDTO in) {
 		
 		UserLigaEntity ULE=new UserLigaEntity();
-		ULE.setUserID(in.getUserID());
-		ULE.setLigasID(in.getLigasID());
 		ULE.setEstado(EstadoLigas.Pendiente);
 		return ULE;
 	}
