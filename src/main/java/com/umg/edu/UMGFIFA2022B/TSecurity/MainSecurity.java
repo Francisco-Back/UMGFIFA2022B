@@ -1,7 +1,6 @@
 package com.umg.edu.UMGFIFA2022B.TSecurity;
 
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

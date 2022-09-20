@@ -22,14 +22,7 @@ import com.umg.edu.UMGFIFA2022B.services.dto.LigasInDTO;
 public class LigasController {
 	
 @Autowired	
-private final LigaServices ligaServices;
-
-	
-	public LigasController(LigaServices ligaServices) {
-		this.ligaServices = ligaServices;
-	}
-	
-	
+private  LigaServices ligaServices;
 	
 	@PostMapping("/{UserID}")
 	public ResponseEntity<?> createLigas(@PathVariable(value = "UserID") Long UserID,@RequestBody  LigasInDTO ligasInDTO) {

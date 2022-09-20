@@ -9,7 +9,6 @@ import com.umg.edu.UMGFIFA2022B.services.dto.LigasInDTO;
 
 public interface ImLigasServices  {
 
-
 	LigasEntity createLiga(Long UserID, LigasInDTO Ligasuser);
 
 	List<LigasEntity> SetLigas();
@@ -18,11 +17,13 @@ public interface ImLigasServices  {
 
 	LigasEntity ObtenerLiga(Long Id);
 
-	void EliminarLiga(Long Id);
-
 	LigasEntity LigaUser(Long Id);
 
 	List<LigasInDTO> findAll();
+
+	void EliminarLiga(Long Id);
+
+
 	
 	
 }

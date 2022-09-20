@@ -3,13 +3,14 @@ package com .umg.edu.UMGFIFA2022B.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.umg.edu.UMGFIFA2022B.TSecurity.Entity.Usuario;
+import com.umg.edu.UMGFIFA2022B.TSecurity.Repository.UsuarioRepository;
 import com.umg.edu.UMGFIFA2022B.entity.LigasEntity;
-import com.umg.edu.UMGFIFA2022B.entity.UserEntity;
 import com.umg.edu.UMGFIFA2022B.mapper.LigasInDTOoLigasEntity;
 import com.umg.edu.UMGFIFA2022B.repository.LigasRepository;
-import com.umg.edu.UMGFIFA2022B.repository.UserRepository;
 import com.umg.edu.UMGFIFA2022B.services.ImServices.ImLigasServices;
 import com.umg.edu.UMGFIFA2022B.services.dto.LigasInDTO;
 
@@ -21,34 +22,23 @@ import com.umg.edu.UMGFIFA2022B.services.dto.LigasInDTO;
 @Service
 public class LigaServices  implements ImLigasServices{
 	
-   
-	private  final LigasRepository ligasRepository;
-    
-    private  final UserRepository userrepository;
-    
-	private final  LigasInDTOoLigasEntity LigaMapper;
+   @Autowired
+	private   LigasRepository ligasRepository;
+   @Autowired
+    private   UsuarioRepository userrepository;
+   @Autowired
+	private   LigasInDTOoLigasEntity LigaMapper;
 	
 
-
-
-	
-
-
-	public LigaServices(LigasRepository ligasRepository, UserRepository userrepository,
-			LigasInDTOoLigasEntity ligaMapper) {
-		this.ligasRepository = ligasRepository;
-		this.userrepository = userrepository;
-		this.LigaMapper = ligaMapper;
-	}
 
 
 	//Crear Liga
 	@Override
 	public LigasEntity createLiga(Long UserID,LigasInDTO Ligasuser) {
 		 LigasEntity LigasE= LigaMapper.map(Ligasuser);
-		 UserEntity e= userrepository.findById(UserID)
+		 Usuario e= userrepository.findById(UserID)
 				 .orElseThrow(); 
-		 LigasE.setUserEntity(e);
+		 LigasE.setUsuario(e);
 		 
 		return this.ligasRepository.save(LigasE);
 	}
@@ -80,7 +70,7 @@ public void EliminarLiga(Long Id) {
 }
 	@Override
 public LigasEntity LigaUser(Long Id) {
-	return this.ligasRepository.findByUserEntity_id(Id);
+	return this.ligasRepository.findByusuario_id(Id);
 }
 
 

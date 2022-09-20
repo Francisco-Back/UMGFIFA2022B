@@ -7,19 +7,19 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.umg.edu.UMGFIFA2022B.TSecurity.Entity.Usuario;
 import com.umg.edu.UMGFIFA2022B.TSecurity.Entity.UsuarioPrincipal;
-import com.umg.edu.UMGFIFA2022B.entity.UserEntity;
-import com.umg.edu.UMGFIFA2022B.services.UserService;
+
+
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
-    UserService usuarioService;
+    UsuarioService usuarioService;
     @Override
-    public UserDetails loadUserByUsername(String nombreUsuario) throws UsernameNotFoundException{
-        UserEntity user = (UserEntity) usuarioService.getByNombreUsuario(nombreUsuario);
-        return UsuarioPrincipal.build(user);
-
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException{
+        Usuario usuario = usuarioService.getByEmail(email).get();
+        return UsuarioPrincipal.build(usuario);
     }
 }
