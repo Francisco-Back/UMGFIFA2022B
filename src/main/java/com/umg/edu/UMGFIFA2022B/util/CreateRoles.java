@@ -1,4 +1,4 @@
-/*
+
 package com.umg.edu.UMGFIFA2022B.util;
 
 import com.umg.edu.UMGFIFA2022B.TSecurity.Entity.Rol;
@@ -26,5 +26,3 @@ import org.springframework.stereotype.Component;
         }
 
     }
-
- */

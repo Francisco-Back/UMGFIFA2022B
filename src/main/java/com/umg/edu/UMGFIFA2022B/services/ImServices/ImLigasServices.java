@@ -17,13 +17,12 @@ public interface ImLigasServices  {
 
 	LigasEntity ObtenerLiga(Long Id);
 
-	LigasEntity LigaUser(Long Id);
-
-	List<LigasInDTO> findAll();
-
 	void EliminarLiga(Long Id);
 
+	LigasEntity LigaUser(Long Id);
 
 	
-	
+
+
+
 }

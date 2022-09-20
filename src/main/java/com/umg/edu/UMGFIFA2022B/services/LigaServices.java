@@ -29,8 +29,7 @@ public class LigaServices  implements ImLigasServices{
    @Autowired
 	private   LigasInDTOoLigasEntity LigaMapper;
 	
-
-
+ 
 
 	//Crear Liga
 	@Override
@@ -74,16 +73,5 @@ public LigasEntity LigaUser(Long Id) {
 }
 
 
-@Override
-public List<LigasInDTO> findAll() {
-	// TODO Auto-generated method stub
-	return null;
-}
-
-
-
-	
-
-	
 	
 }

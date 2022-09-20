@@ -1,9 +1,5 @@
 package com.umg.edu.UMGFIFA2022B.entity;
 
-
-
-import java.util.Set;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -13,7 +9,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="Ligas")
+@Table(name="liga")
 public class LigasEntity {
    @Id
    @GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,9 +22,10 @@ public class LigasEntity {
    private String Fecha_Final;
    @Column(name="Cant_Equipos")
    private int Cant_Equipos;
+   
    @NotNull
-   @ManyToOne(cascade = CascadeType.ALL)
-   @JoinColumn(foreignKey = @ForeignKey(name = "fk_liga_id"), name="usuario_id", referencedColumnName = "id", columnDefinition = "Long")
+   @ManyToOne( cascade = CascadeType.ALL)
+   @JoinColumn(foreignKey = @ForeignKey(name = "ligas_pkey"), name="usuario_ID", referencedColumnName = "id", columnDefinition = "int8")
    private Usuario usuario;
    
  

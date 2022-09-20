@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name="Usuario")
+@Table(name="usuario")
 public class Usuario {
 	   @Id
 	   @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,15 +23,15 @@ public class Usuario {
     private String avatar;
     @NotNull
     private String password;
-    
-    @OneToMany(mappedBy = "Usuario", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<LigasEntity> ligas = new HashSet<>();
     @NotNull
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "usuario_id"),
             inverseJoinColumns = @JoinColumn(name = "rol_id"))
     private Set<Rol> roles = new HashSet<>();
 
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<LigasEntity> liga = new HashSet<>();
+    
     public Usuario() {
     }
 
@@ -92,11 +92,11 @@ public class Usuario {
     public void setRoles(Set<Rol> roles) {
         this.roles = roles;
     }
-    public Set<LigasEntity> getLigas() {
+   /* public Set<LigasEntity> getLigas() {
         return ligas;
     }
 
     public void setLigas(Set<LigasEntity> ligas) {
         this.ligas = ligas;
-    }
+    }*/
 }
