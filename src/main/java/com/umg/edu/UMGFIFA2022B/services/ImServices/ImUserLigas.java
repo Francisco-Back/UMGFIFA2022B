@@ -16,6 +16,8 @@ public interface ImUserLigas {
 
 	List<UserLigaEntity> Estados(EstadoLigas estadoLigas);
 
+	void updateEstados(Long id, EstadoLigas estadoLigas);
+
 
 
 }
