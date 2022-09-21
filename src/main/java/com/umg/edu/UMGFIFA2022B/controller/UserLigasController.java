@@ -9,38 +9,59 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.umg.edu.UMGFIFA2022B.TSecurity.DTO.Mensaje;
+import com.umg.edu.UMGFIFA2022B.entity.Enum.EstadoLigas;
 import com.umg.edu.UMGFIFA2022B.services.UserLigasService;
-import com.umg.edu.UMGFIFA2022B.services.dto.UserLigasDTO;
-
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @RestController
 @RequestMapping("/api")
 public class UserLigasController  {
 	@Autowired	
-	private final UserLigasService userligasService;
-
-	public UserLigasController(UserLigasService userligasService) {
-		this.userligasService = userligasService;
-	}
+	private  UserLigasService userligasService;
 
 	@PostMapping("/UnionLiga/{UserID}/{LigasID}" )
-	public ResponseEntity<?> UnionLiga(@PathVariable Long UserID,@PathVariable Long LigasID, @RequestBody UserLigasDTO  dto ){
-		return new ResponseEntity<>(userligasService.UnionLiga(UserID, LigasID),HttpStatus.CREATED);
+	public ResponseEntity<?> UnionLiga(@PathVariable("UserID") Long UserID,@PathVariable("LigasID") Long LigasID){
+		//userligasService.UnionLiga(UserID, LigasID);
+		if(userligasService.UnionLiga(UserID, LigasID)==null) {
+		return new ResponseEntity <>(new Mensaje("Union Exitosa"),HttpStatus.CREATED);
+		}else {
+			return new ResponseEntity <>(new Mensaje("Union Fail"),HttpStatus.NOT_FOUND);
+		}
 	}
-	/*
-	@GetMapping("/Ligas/{}")
-	public ResponseEntity<?> LigasPro(@PathVariable Long LigaID){
+
+	@GetMapping("/Ligas/{LigaID}")
+	public ResponseEntity<?> LigasPro(@PathVariable("LigasID") Long LigaID){
+	if(userligasService.SearchIdLiga(LigaID)==null) {
+		return new ResponseEntity<>(this.userligasService.SearchIdLiga(LigaID),HttpStatus.OK);
+	}else {
+		return new ResponseEntity<>(new Mensaje("Liga No encontrada"), HttpStatus.NOT_FOUND);
+	}
+	}
+	
+	@GetMapping("/Ligas/{UserID}")
+	public ResponseEntity<?> Ligauser(@PathVariable("UserID") Long UserID){
+		if(userligasService.SearchIdUser(UserID)==null) {
+			return new ResponseEntity<>(this.userligasService.SearchIdUser(UserID),HttpStatus.OK);
+		}else {
+			return new ResponseEntity<>(new Mensaje("Liga No encontrada"), HttpStatus.NOT_FOUND);
+		}
+	}
+	
+	
+
+	@GetMapping("/Estado/{EsLiga}")
+	public ResponseEntity<?> EstadoLiga(@PathVariable("EsLiga") EstadoLigas EsLiga){
 		
-	}
-	@GetMapping("/Ligas/{}")
-	public ResponseEntity<?> Ligauser(@PathVariable Long UserID){
+		if(userligasService.Estados(EsLiga)==null) {
+			return new ResponseEntity<>(userligasService.Estados(EsLiga), HttpStatus.OK);
+			
+		}else {
+			return new ResponseEntity<>(new Mensaje("Fallo Cambio Estado "), HttpStatus.NOT_FOUND);
+		}
+		
 		
 	}
 	
-	@GetMapping("/Estado/{EsLiga}")
-	public ResponseEntity<?> EstadoLiga(int EsLiga){
-		
-	}*/
+	
 	
 }

@@ -1,6 +1,8 @@
 package com.umg.edu.UMGFIFA2022B.services;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -46,8 +48,25 @@ public class UserLigasService implements  ImUserLigas{
 		 LigasE.setEstado(EstadoLigas.Pendiente);
 		return this.UsLigasRepository.save(LigasE);
 	}
+    
+    
+    @Override
+	public List<UserLigaEntity> SearchIdLiga(Long LigasID){
+		
+		return this.UsLigasRepository.searchLigasID(LigasID);
+		
+	}
 	
-	
+    @Override
+public List<UserLigaEntity> SearchIdUser(Long UserID){
+		
+		return this.UsLigasRepository.searchUserID(UserID);
+		
+	}
+    @Override
+    public List<UserLigaEntity> Estados(EstadoLigas estadoLigas){
+    	return this.UsLigasRepository.findAllByEstado(estadoLigas);
+    }
 	
 	
 
