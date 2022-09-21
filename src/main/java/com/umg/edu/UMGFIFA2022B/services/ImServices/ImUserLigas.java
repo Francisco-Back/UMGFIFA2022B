@@ -7,8 +7,4 @@ public interface ImUserLigas {
 
 	UserLigaEntity UnionLiga(Long UserID, Long LigasID, UserLigasDTO dto);
 
-	
-
-
-
 }

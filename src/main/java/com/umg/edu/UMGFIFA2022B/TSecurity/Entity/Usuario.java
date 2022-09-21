@@ -5,6 +5,7 @@ import javax.validation.constraints.NotNull;
 
 import com.umg.edu.UMGFIFA2022B.entity.LigasEntity;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,6 +25,8 @@ public class Usuario {
     @NotNull
     private String password;
     @NotNull
+    private LocalDateTime createDate;
+    @NotNull
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "usuario_id"),
             inverseJoinColumns = @JoinColumn(name = "rol_id"))
@@ -36,44 +39,43 @@ public class Usuario {
     }
 
 
-	public Usuario(@NotNull String nombre,@NotNull String avatar, @NotNull String email, @NotNull String password) {
-        this.nombre = nombre;
-        this.avatar = avatar;
-        this.email = email;
-        this.password = password;
-    }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+	public Usuario( @NotNull String nombre, @NotNull String email, @NotNull String avatar,
+			@NotNull String password ) {
+		this.nombre = nombre;
+		this.email = email;
+		this.avatar = avatar;
+		this.password = password;
+	
+	}
 
 
-    public String getEmail() {
-        return email;
-    }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public String getPassword() {
-        return password;
-    }
-    
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public String getAvatar() {
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getAvatar() {
 		return avatar;
 	}
 
@@ -81,22 +83,31 @@ public class Usuario {
 		this.avatar = avatar;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
 	public void setPassword(String password) {
-        this.password = password;
-    }
+		this.password = password;
+	}
 
-    public Set<Rol> getRoles() {
-        return roles;
-    }
+	public LocalDateTime getCreateDate() {
+		return createDate;
+	}
 
-    public void setRoles(Set<Rol> roles) {
-        this.roles = roles;
-    }
-   /* public Set<LigasEntity> getLigas() {
-        return ligas;
-    }
+	public void setCreateDate(LocalDateTime createDate) {
+		this.createDate = createDate;
+	}
 
-    public void setLigas(Set<LigasEntity> ligas) {
-        this.ligas = ligas;
-    }*/
+	public Set<Rol> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Rol> roles) {
+		this.roles = roles;
+	}
+
+
+
+
 }

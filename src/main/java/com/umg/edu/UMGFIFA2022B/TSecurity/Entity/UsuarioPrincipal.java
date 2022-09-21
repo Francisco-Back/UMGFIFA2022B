@@ -4,6 +4,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,7 +16,11 @@ public class UsuarioPrincipal implements UserDetails {
     private String password;
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UsuarioPrincipal(String nombre, String email, String avatar, String password,
+
+
+
+
+	public UsuarioPrincipal(String nombre, String email, String avatar, String password,
 			Collection<? extends GrantedAuthority> authorities) {
 		this.nombre = nombre;
 		this.email = email;
@@ -24,8 +29,7 @@ public class UsuarioPrincipal implements UserDetails {
 		this.authorities = authorities;
 	}
 
-
-    public static UsuarioPrincipal build(Usuario usuario){
+	public static UsuarioPrincipal build(Usuario usuario){
         List<GrantedAuthority> authorities =
                 usuario.getRoles().stream().map(rol -> new SimpleGrantedAuthority(rol
                         .getRolNombre().name())).collect(Collectors.toList());
@@ -66,8 +70,6 @@ public class UsuarioPrincipal implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-    
-
     public String getNombre() {
         return nombre;
     }
@@ -78,4 +80,6 @@ public class UsuarioPrincipal implements UserDetails {
     public String getAvatar() {
         return avatar;
     }
+    
+
 }

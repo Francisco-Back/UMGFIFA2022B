@@ -12,58 +12,32 @@ import java.util.Set;
 public class NuevoUsuario {
     @NotBlank
     private String nombre;
-    @NotBlank
-    private String nombreUsuario;
     @Email
-    private String Correo;
+    private String Email;
     @NotBlank
 	private String Avatar;
     @NotBlank
     private String Password;
-    @NotBlank
-    private LocalDateTime createDate;
+ 
     
     private Set<String> roles = new HashSet<>();
 
-    public String getNombre() {
-        return nombre;
-    }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+	public String getNombre() {
+		return nombre;
+	}
 
-    public String getNombreUsuario() {
-        return nombreUsuario;
-    }
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
-    }
+	public String getEmail() {
+		return Email;
+	}
 
-    public String getEmail() {
-        return Correo;
-    }
-
-    public void setEmail(String Correo) {
-        this.Correo = Correo;
-    }
-
-    public String getPassword() {
-        return Password;
-    }
-
-    public void setPassword(String Password) {
-        this.Password = Password;
-    }
-
-    public Set<String> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<String> roles) {
-        this.roles = roles;
-    }
+	public void setEmail(String email) {
+		Email = email;
+	}
 
 	public String getAvatar() {
 		return Avatar;
@@ -73,12 +47,23 @@ public class NuevoUsuario {
 		Avatar = avatar;
 	}
 
-	public LocalDateTime getCreateDate(LocalDateTime localDateTime) {
-		return createDate;
+	public String getPassword() {
+		return Password;
 	}
 
-	public void setCreateDate(LocalDateTime createDate) {
-		this.createDate = createDate;
+	public void setPassword(String password) {
+		Password = password;
 	}
-    
+
+	public Set<String> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<String> roles) {
+		this.roles = roles;
+	}
+
+
+
+
 }

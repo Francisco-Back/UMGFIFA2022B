@@ -18,7 +18,7 @@ public class UsuarioService {
     @Autowired
     UsuarioRepository usuarioRepository;
 
-
+ 
 
   /*  public boolean existsByNombreUsuario(String nombreUsuario){
         return usuarioRepository.existsByNombreUsuario(nombreUsuario);
@@ -34,6 +34,6 @@ public class UsuarioService {
 
 	public Optional<Usuario> getByEmail(String email) {
 	
-		return   this.usuarioRepository.findByEmail(email);
+		return this.usuarioRepository.findByEmail(email);
 	}
 }
