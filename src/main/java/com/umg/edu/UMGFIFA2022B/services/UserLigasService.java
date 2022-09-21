@@ -8,6 +8,7 @@ import com.umg.edu.UMGFIFA2022B.TSecurity.Entity.Usuario;
 import com.umg.edu.UMGFIFA2022B.TSecurity.Repository.UsuarioRepository;
 import com.umg.edu.UMGFIFA2022B.entity.LigasEntity;
 import com.umg.edu.UMGFIFA2022B.entity.UserLigaEntity;
+import com.umg.edu.UMGFIFA2022B.entity.Enum.EstadoLigas;
 import com.umg.edu.UMGFIFA2022B.mapper.UserLIgasInDTOoUserLigasEntity;
 import com.umg.edu.UMGFIFA2022B.repository.LigasRepository;
 import com.umg.edu.UMGFIFA2022B.repository.UserLIgasRepository;
@@ -27,21 +28,22 @@ public class UserLigasService implements  ImUserLigas{
 	@Autowired
 	private UsuarioRepository usuarioRepository;
     
-	private   UserLIgasInDTOoUserLigasEntity USLmapper;
+
 
 	
 	
-	@Override
-	public UserLigaEntity UnionLiga(Long UserID, Long LigasID,UserLigasDTO dto) {
+    @Override
+	public UserLigaEntity UnionLiga(Long UserID, Long LigasID) {
 		
-	    UserLigaEntity LigasE= USLmapper.map(dto);
+		UserLigaEntity LigasE=new UserLigaEntity();
+	    
 		 Usuario e= usuarioRepository.findById(UserID)
 				 .orElseThrow(); 
 		 LigasE.setUsuario(e);;
 		 LigasEntity l=ligasRepository.findById(LigasID)
 				 .orElseThrow();
 		 LigasE.setLigasEntity(l);
-		 
+		 LigasE.setEstado(EstadoLigas.Pendiente);
 		return this.UsLigasRepository.save(LigasE);
 	}
 	

@@ -26,7 +26,7 @@ public class UserLigasController  {
 
 	@PostMapping("/UnionLiga/{UserID}/{LigasID}" )
 	public ResponseEntity<?> UnionLiga(@PathVariable Long UserID,@PathVariable Long LigasID, @RequestBody UserLigasDTO  dto ){
-		return new ResponseEntity<>(userligasService.UnionLiga(UserID, LigasID, dto),HttpStatus.CREATED);
+		return new ResponseEntity<>(userligasService.UnionLiga(UserID, LigasID),HttpStatus.CREATED);
 	}
 	/*
 	@GetMapping("/Ligas/{}")

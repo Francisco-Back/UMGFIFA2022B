@@ -12,9 +12,9 @@ public class UserLIgasInDTOoUserLigasEntity implements IMapper<UserLigasDTO, Use
 
 	@Override
 	public UserLigaEntity map(UserLigasDTO in) {
-		
 		UserLigaEntity ULE=new UserLigaEntity();
 		ULE.setEstado(EstadoLigas.Pendiente);
+		
 		return ULE;
 	}
 	
