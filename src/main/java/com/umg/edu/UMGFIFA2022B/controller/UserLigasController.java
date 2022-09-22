@@ -68,7 +68,7 @@ public class UserLigasController  {
 		
 		userligasService.updateEstados(IdUnio, Estado);
 	
-		return  new ResponseEntity<>(new Mensaje("User Liga Update"),HttpStatus.NO_CONTENT);
+		return  new ResponseEntity<>(new Mensaje("User Liga Update"),HttpStatus.OK);
 	
 	}
 	

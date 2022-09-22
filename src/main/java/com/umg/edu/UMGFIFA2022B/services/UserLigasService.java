@@ -3,6 +3,8 @@ package com.umg.edu.UMGFIFA2022B.services;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -70,6 +72,7 @@ public List<UserLigaEntity> SearchIdUser(Long UserID){
     	return this.UsLigasRepository.findAllByEstado(estadoLigas);
     }
 	
+    @Transactional
     @Override
 	public void updateEstados(Long id, int estadoLigas) {
 		
