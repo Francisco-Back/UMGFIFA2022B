@@ -14,9 +14,10 @@ public interface ImUserLigas {
 
 	List<UserLigaEntity> SearchIdUser(Long IdUser);
 
-	List<UserLigaEntity> Estados(EstadoLigas estadoLigas);
 
-	void updateEstados(Long id, EstadoLigas estadoLigas);
+	List<UserLigaEntity> Estados(int estadoLigas);
+
+	void updateEstados(Long id, int estadoLigas);
 
 
 

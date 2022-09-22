@@ -29,7 +29,7 @@ private  LigaServices ligaServices;
 	
 	@PostMapping("/{UserID}")
 	public ResponseEntity<?> createLigas(@PathVariable(value = "UserID") Long UserID,@RequestBody  LigasInDTO ligasInDTO) {
-		if(ligaServices.createLiga(UserID, ligasInDTO)==null) {
+		if(ligaServices.createLiga(UserID, ligasInDTO)!=null) {
 			return new ResponseEntity<>(new Mensaje("Liga Creada"),HttpStatus.CREATED);
 		}else {
 			return new ResponseEntity<>(new Mensaje("Liga Fail"),HttpStatus.NOT_FOUND);
@@ -48,7 +48,7 @@ private  LigaServices ligaServices;
 	@GetMapping("/LigasUser/{IDLigas}")
 	public ResponseEntity<?> findAllByLigas(@PathVariable("IDLigas") Long  LigasID) {
 		
-		if (this.ligaServices.findAllByLigas(LigasID)==null) {
+		if (this.ligaServices.findAllByLigas(LigasID)!=null) {
 			return  new ResponseEntity<>(this.ligaServices.findAllByLigas(LigasID), HttpStatus.OK);
 		}else {
 			 return  new ResponseEntity <>(new Mensaje("No encontrada "),HttpStatus.NOT_FOUND);
@@ -68,7 +68,7 @@ private  LigaServices ligaServices;
 	@GetMapping("/UserT/{UserID}")
 	public ResponseEntity<?> LigaUser(@PathVariable("UserID") Long  UserID) {
 		
-		if (this.ligaServices.LigaUser(UserID)==null) {
+		if (this.ligaServices.LigaUser(UserID)!=null) {
 			return  new ResponseEntity<>(this.ligaServices.LigaUser(UserID), HttpStatus.OK);
 		}else {
 			 return  new ResponseEntity <>(new Mensaje("No encontrada "),HttpStatus.NOT_FOUND);

@@ -16,7 +16,7 @@ import com.umg.edu.UMGFIFA2022B.entity.Enum.EstadoLigas;
 import com.umg.edu.UMGFIFA2022B.services.UserLigasService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/UserLigas")
 public class UserLigasController  {
 	@Autowired	
 	private  UserLigasService userligasService;
@@ -25,24 +25,25 @@ public class UserLigasController  {
 	public ResponseEntity<?> UnionLiga(@PathVariable("UserID") Long UserID,@PathVariable("LigasID") Long LigasID){
 		//userligasService.UnionLiga(UserID, LigasID);
 		if(userligasService.UnionLiga(UserID, LigasID)==null) {
-		return new ResponseEntity <>(new Mensaje("Union Exitosa"),HttpStatus.CREATED);
-		}else {
 			return new ResponseEntity <>(new Mensaje("Union Fail"),HttpStatus.NOT_FOUND);
+		}else {
+			
+			return new ResponseEntity <>(new Mensaje("Union Exitosa"),HttpStatus.CREATED);
 		}
 	}
 
-	@GetMapping("/Ligas/{LigaID}")
+	@GetMapping("/searchLiga/{LigasID}")
 	public ResponseEntity<?> LigasPro(@PathVariable("LigasID") Long LigaID){
-	if(userligasService.SearchIdLiga(LigaID)==null) {
+	if(userligasService.SearchIdLiga(LigaID)!=null) {
 		return new ResponseEntity<>(this.userligasService.SearchIdLiga(LigaID),HttpStatus.OK);
 	}else {
 		return new ResponseEntity<>(new Mensaje("Liga No encontrada"), HttpStatus.NOT_FOUND);
 	}
 	}
 	
-	@GetMapping("/Ligas/{UserID}")
+	@GetMapping("/searchuser/{UserID}")
 	public ResponseEntity<?> Ligauser(@PathVariable("UserID") Long UserID){
-		if(userligasService.SearchIdUser(UserID)==null) {
+		if(userligasService.SearchIdUser(UserID)!=null) {
 			return new ResponseEntity<>(this.userligasService.SearchIdUser(UserID),HttpStatus.OK);
 		}else {
 			return new ResponseEntity<>(new Mensaje("Liga No encontrada"), HttpStatus.NOT_FOUND);
@@ -52,9 +53,9 @@ public class UserLigasController  {
 	
 
 	@GetMapping("/Estado/{EsLiga}")
-	public ResponseEntity<?> EstadoLiga(@PathVariable("EsLiga") EstadoLigas EsLiga){
+	public ResponseEntity<?> EstadoLiga(@PathVariable("EsLiga") int EsLiga){
 		
-		if(userligasService.Estados(EsLiga)==null) {
+		if(userligasService.Estados(EsLiga)!=null) {
 			return new ResponseEntity<>(userligasService.Estados(EsLiga), HttpStatus.OK);
 			
 		}else {
@@ -64,9 +65,9 @@ public class UserLigasController  {
 		
 	}
 	
-	@PatchMapping("/update/Esatdo/{IdUnio}/{Estado}")
+	@PatchMapping("/update/Estado/{IdUnio}/{Estado}")
 	public ResponseEntity<?>  UpdateEstados(@PathVariable("IdUnio") Long IdUnio ,
-			@PathVariable("Estado") EstadoLigas  Estado){
+			@PathVariable("Estado") int  Estado){
 		
 		userligasService.updateEstados(IdUnio, Estado);
 	

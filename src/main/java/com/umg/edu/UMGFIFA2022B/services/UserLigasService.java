@@ -63,13 +63,15 @@ public List<UserLigaEntity> SearchIdUser(Long UserID){
 		return this.UsLigasRepository.searchUserID(UserID);
 		
 	}
+    
+    
     @Override
-    public List<UserLigaEntity> Estados(EstadoLigas estadoLigas){
+    public List<UserLigaEntity> Estados(int estadoLigas){
     	return this.UsLigasRepository.findAllByEstado(estadoLigas);
     }
 	
     @Override
-	public void updateEstados(Long id, EstadoLigas estadoLigas) {
+	public void updateEstados(Long id, int estadoLigas) {
 		
 		 this.UsLigasRepository.CEsatado(estadoLigas, id);
 	}
