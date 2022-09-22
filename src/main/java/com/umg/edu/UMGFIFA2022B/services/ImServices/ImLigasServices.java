@@ -13,13 +13,13 @@ public interface ImLigasServices  {
 
 	List<LigasEntity> SetLigas();
 
-	Optional<LigasEntity> findAllByLigas(Long UserID);
-
 	LigasEntity ObtenerLiga(Long Id);
 
 	void EliminarLiga(Long Id);
 
 	List<LigasEntity> LigaUser(Long Id);
+
+	
 
 
 	

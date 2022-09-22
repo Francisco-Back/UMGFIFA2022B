@@ -9,8 +9,10 @@ import java.util.List;
 @Repository
 public interface LigasRepository extends JpaRepository<LigasEntity, Long>{
 
-	@Query(value = "SELECT * FROM liga WHERE user_entity_id =:id", nativeQuery = true)
+	@Query(value = "SELECT * FROM liga WHERE usuario_id =:id", nativeQuery = true)
 	 List<LigasEntity> searhusuario_id(Long id);
+
+	
 	
 	LigasEntity findByusuario_id(Long id);
 	

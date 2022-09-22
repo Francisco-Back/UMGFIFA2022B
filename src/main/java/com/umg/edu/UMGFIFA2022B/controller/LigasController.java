@@ -22,7 +22,7 @@ public class LigasController {
 	
 @Autowired	
 private  LigaServices ligaServices;
-	
+	// se crea liga
 	@PostMapping("/Create/{UserID}")
 	public ResponseEntity<?> createLigas(@PathVariable(value = "UserID") Long UserID,@RequestBody  LigasInDTO ligasInDTO) {
 		if(ligaServices.createLiga(UserID, ligasInDTO)!=null) {
@@ -33,7 +33,7 @@ private  LigaServices ligaServices;
 		
 	}
 
-	
+	// se obtiene todas la ligas
 	@GetMapping
 	public ResponseEntity<?> setLiga() {
 		
@@ -41,17 +41,23 @@ private  LigaServices ligaServices;
 
 	}
 	
+	//se obtiene liga por id
+	
 	@GetMapping("/LigasUser/{IDLigas}")
-	public ResponseEntity<?> findAllByLigas(@PathVariable("IDLigas") Long  LigasID) {
+	public ResponseEntity<?> ObtenerLiga(@PathVariable("IDLigas") Long  LigasID) {
 		
-		if (ligaServices.findAllByLigas(LigasID)!=null) {
-			return  new ResponseEntity<>(this.ligaServices.findAllByLigas(LigasID), HttpStatus.OK);
-		}else {
+		if (ligaServices.ObtenerLiga(LigasID)==null) {
+			
 			 return  new ResponseEntity <>(new Mensaje("No encontrada "),HttpStatus.NOT_FOUND);
+			
+		}else {
+			return  new ResponseEntity<>(this.ligaServices.ObtenerLiga(LigasID), HttpStatus.OK);
+		
 		}
 		
 	}
 	
+	//se elimina liga
 	@DeleteMapping("/Delete/{IdLiga}")
 	public ResponseEntity<?> EliminarLiga(@PathVariable Long IdLiga){
 		
@@ -61,13 +67,16 @@ private  LigaServices ligaServices;
 		return new ResponseEntity <>(new Mensaje("Liga Eliminada "),HttpStatus.OK);
 	}
 	
+	
+	//se obtiene liga por userID
 	@GetMapping("/UserT/{UserID}")
 	public ResponseEntity<?> LigaUser(@PathVariable("UserID") Long  UserID) {
 		
-		if (ligaServices.LigaUser(UserID)!=null) {
-			return  new ResponseEntity<>(this.ligaServices.LigaUser(UserID), HttpStatus.OK);
-		}else {
+		if (ligaServices.LigaUser(UserID)==null) {
 			 return  new ResponseEntity <>(new Mensaje("No encontrada "),HttpStatus.NOT_FOUND);
+			
+		}else {
+			return  new ResponseEntity<>(this.ligaServices.LigaUser(UserID), HttpStatus.OK);
 		}
 		
 				

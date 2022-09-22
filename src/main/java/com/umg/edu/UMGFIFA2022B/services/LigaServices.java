@@ -49,12 +49,6 @@ public class LigaServices  implements ImLigasServices{
 	return this.ligasRepository.findAll();
 	}	
    
-	//obtener lista de ligas Usuario
-	@Override
-public Optional<LigasEntity> findAllByLigas(Long UserID){
-	
-return this.ligasRepository.findById(UserID);	
-}
 
 //Retorna Una liga por ID
 	@Override
