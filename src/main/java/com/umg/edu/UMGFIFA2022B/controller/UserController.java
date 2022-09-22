@@ -1,7 +1,10 @@
 package com.umg.edu.UMGFIFA2022B.controller;
 
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Map;
+
+import javax.imageio.ImageIO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.umg.edu.UMGFIFA2022B.services.CloudinaryService;
 import com.umg.edu.UMGFIFA2022B.services.UserService;
+import com.umg.edu.UMGFIFA2022B.services.dto.Mensaje;
 import com.umg.edu.UMGFIFA2022B.services.dto.UserlnDTO;
 
 @CrossOrigin(origins = "/**")
@@ -38,9 +42,14 @@ public class UserController {
 		return new ResponseEntity<>(userservice.createUser(userlnDTO),HttpStatus.CREATED);
 	}
 	@PostMapping("/upload")
-	public ResponseEntity<Map> upload(@RequestParam MultipartFile multipartFile) throws IOException{
+	public ResponseEntity<?> upload(@RequestParam MultipartFile multipartFile) throws IOException{
+		BufferedImage bi = ImageIO.read(multipartFile.getInputStream());
+		if(bi==null){
+			return new ResponseEntity(new Mensaje("Imagen no valida"), HttpStatus.BAD_REQUEST);
+		}
 		Map result = cloudinaryService.upload(multipartFile);
-		return new ResponseEntity<Map>(result, HttpStatus.OK);
+		String imagen = (String)result.get("public_id");
+		return new ResponseEntity(imagen, HttpStatus.OK);
 	}
 
 	@GetMapping
