@@ -22,9 +22,19 @@ import com.umg.edu.UMGFIFA2022B.TSecurity.Jwt.JwtProvider;
 import com.umg.edu.UMGFIFA2022B.TSecurity.Services.RolService;
 import com.umg.edu.UMGFIFA2022B.TSecurity.Services.UsuarioService;
 import com.umg.edu.UMGFIFA2022B.TSecurity.enums.RolNombre;
+import com.umg.edu.UMGFIFA2022B.services.CloudinaryService;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.Map;
+import javax.imageio.ImageIO;
 
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
-
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -48,6 +58,8 @@ public class AuthController {
 
     @Autowired
     JwtProvider jwtProvider;
+	@Autowired
+	private CloudinaryService cloudinaryService;
 
     @PostMapping("/nuevo")
     public ResponseEntity<?> nuevo(@Valid @RequestBody NuevoUsuario nuevoUsuario, BindingResult bindingResult){
@@ -82,4 +94,17 @@ public class AuthController {
         JwtDto jwtDto = new JwtDto(jwt, userDetails.getUsername(), userDetails.getAuthorities());
         return new ResponseEntity(jwtDto, HttpStatus.OK);
     }
+    
+	@PostMapping("/upload")
+	public ResponseEntity<?> upload(@RequestParam MultipartFile multipartFile) throws IOException{
+		BufferedImage bi = ImageIO.read(multipartFile.getInputStream());
+		if(bi==null){
+			return new ResponseEntity(new Mensaje("Imagen no valida"), HttpStatus.BAD_REQUEST);
+		}
+		Map result = cloudinaryService.upload(multipartFile);
+		String imagen = (String)result.get("public_id");
+		return new ResponseEntity(imagen, HttpStatus.OK);
+	}
+    
+    
 }

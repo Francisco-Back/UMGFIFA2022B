@@ -1,8 +1,5 @@
 package com.umg.edu.UMGFIFA2022B.controller;
 
-import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.umg.edu.UMGFIFA2022B.TSecurity.DTO.Mensaje;
-import com.umg.edu.UMGFIFA2022B.entity.LigasEntity;
 import com.umg.edu.UMGFIFA2022B.services.LigaServices;
 import com.umg.edu.UMGFIFA2022B.services.dto.LigasInDTO;
 

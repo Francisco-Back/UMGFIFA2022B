@@ -3,8 +3,6 @@ package com.umg.edu.UMGFIFA2022B.services.ImServices;
 import java.util.List;
 
 import com.umg.edu.UMGFIFA2022B.entity.UserLigaEntity;
-import com.umg.edu.UMGFIFA2022B.entity.Enum.EstadoLigas;
-import com.umg.edu.UMGFIFA2022B.services.dto.UserLigasDTO;
 
 public interface ImUserLigas {
 

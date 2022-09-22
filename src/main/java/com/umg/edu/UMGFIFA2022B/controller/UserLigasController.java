@@ -8,11 +8,8 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.umg.edu.UMGFIFA2022B.TSecurity.DTO.Mensaje;
-import com.umg.edu.UMGFIFA2022B.entity.Enum.EstadoLigas;
 import com.umg.edu.UMGFIFA2022B.services.UserLigasService;
 
 @RestController
