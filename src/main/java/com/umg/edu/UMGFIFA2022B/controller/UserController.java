@@ -45,7 +45,7 @@ public class UserController {
 	@GetMapping("/Dsearch/{CUser}")
 	public ResponseEntity<?> UserID(@PathVariable("CUser") String CUser) throws Exception{
 		
-		if(userservice.Correo(CUser)!=null) {
+		if(userservice.UserID(CUser)!=null) {
 			return new ResponseEntity<>(this.userservice.UserID(CUser),HttpStatus.OK);
 		}else {
 			return new ResponseEntity<>(new Mensaje("Correo No Encontrado"),HttpStatus.NOT_FOUND);
