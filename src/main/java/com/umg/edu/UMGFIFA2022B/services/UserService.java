@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import com.umg.edu.UMGFIFA2022B.TSecurity.Entity.Usuario;
 import com.umg.edu.UMGFIFA2022B.TSecurity.Repository.UsuarioRepository;
+import com.umg.edu.UMGFIFA2022B.entity.UserEntity;
 import com.umg.edu.UMGFIFA2022B.services.ImServices.ImUserService;
 
 
@@ -37,6 +38,19 @@ public class UserService implements ImUserService {
 			throw new Exception(exception.getMessage());
 		}
 		
+	}
+	
+	
+	@Override
+	public UserEntity UserID(String C) { 
+		
+		UserEntity r=new UserEntity();
+		 Usuario e= repository.UserID(C);
+		 r.setUserID(e.getId());;
+		 r.setUserName(e.getNombre());
+		 r.setAvatar(e.getAvatar());
+		
+		return r;
 	}
 
 
