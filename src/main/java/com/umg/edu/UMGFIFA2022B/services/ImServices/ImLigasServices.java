@@ -1,7 +1,6 @@
 package com.umg.edu.UMGFIFA2022B.services.ImServices;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.umg.edu.UMGFIFA2022B.entity.LigasEntity;
 import com.umg.edu.UMGFIFA2022B.services.dto.LigasInDTO;
