@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+
+import com.umg.edu.UMGFIFA2022B.TSecurity.Entity.Usuario;
 import com.umg.edu.UMGFIFA2022B.entity.UserLigaEntity;
 
 @Repository
@@ -14,6 +16,10 @@ public interface UserLIgasRepository extends JpaRepository<UserLigaEntity, Long>
 	
 	@Query(value = "SELECT * FROM user_ligas WHERE ligasid =:LigasID", nativeQuery = true)
 	List<UserLigaEntity> searchLigasID(Long LigasID);
+	
+	@Query(value = "SELECT userid FROM user_ligas WHERE ligasid =:LigasID", nativeQuery = true)
+	List<Usuario> ObUseliga(Long LigasID);
+	
 	@Query(value = "SELECT * FROM user_ligas WHERE userid =:UserID", nativeQuery = true)
 	List<UserLigaEntity> searchUserID(Long UserID);
 	
@@ -23,5 +29,6 @@ public interface UserLIgasRepository extends JpaRepository<UserLigaEntity, Long>
 	@Modifying
 	@Query(value = "UPDATE user_ligas SET estado=:tado WHERE id=:ID", nativeQuery = true)
 	public void CEsatado(@Param("tado") int tado, @Param("ID")Long ID);
+	
 }
 

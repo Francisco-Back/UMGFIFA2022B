@@ -65,11 +65,22 @@ public class UserController {
 		}else {
 			return new ResponseEntity<>(new Mensaje("Correo no Enviado N"), HttpStatus.NOT_FOUND);
 		}
+	}
 		
+	@GetMapping("/Integrantes/{LigaId}")
+	public ResponseEntity<?> Integrantes(@PathVariable("LigaId") Long LigaId){
 		
-		
+		if( LigaId!=null ) {
+			return new ResponseEntity<>(this.userservice.OTUseliga(LigaId),HttpStatus.OK);
+		}else {
+			return new ResponseEntity<>(new Mensaje("Correo no Enviado N"), HttpStatus.NOT_FOUND);
+		}
 	}
 	
+		
+		
+		
+
 	
 
 	

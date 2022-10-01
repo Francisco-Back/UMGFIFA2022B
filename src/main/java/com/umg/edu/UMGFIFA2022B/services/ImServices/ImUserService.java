@@ -15,6 +15,8 @@ public interface ImUserService {
 
 	UserEntity UserID(String C);
 
+	List<Usuario> OTUseliga(Long ID);
+
 
 
 
