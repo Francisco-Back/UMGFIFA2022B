@@ -65,6 +65,12 @@ public void EliminarLiga(Long Id) {
 public  List<LigasEntity> LigaUser(Long Id) {
 	return this.ligasRepository.searhusuario_id(Id);
 }
+	@Override
+public  Long Verificador(Long Id) {
+		System.out.println("Metodo Verificador");
+		System.out.println(this.ligasRepository.Verificador(Id).getUsuario().getId());
+	return this.ligasRepository.Verificador(Id).getUsuario().getId();
+}
 	
 
 

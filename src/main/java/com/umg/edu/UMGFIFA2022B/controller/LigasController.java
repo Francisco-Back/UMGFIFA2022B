@@ -82,6 +82,18 @@ private  LigaServices ligaServices;
 				
 	
 	}
+	//se obtiene liga por userID
+	@GetMapping("/Verificador/{LigaID}")
+	public ResponseEntity<?> Verificador(@PathVariable("LigaID") Long  LigaID) {
+		
+		if (ligaServices.Verificador(LigaID)==null) {
+			 return  new ResponseEntity <>(new Mensaje("No encontrada "),HttpStatus.NOT_FOUND);
+			
+		}else {
+			return  new ResponseEntity<>(this.ligaServices.Verificador(LigaID), HttpStatus.OK);
+		}
+
+	}
 	
 }
 

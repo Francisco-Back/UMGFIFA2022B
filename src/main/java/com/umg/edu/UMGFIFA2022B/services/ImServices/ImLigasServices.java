@@ -18,6 +18,8 @@ public interface ImLigasServices  {
 
 	List<LigasEntity> LigaUser(Long Id);
 
+	Long Verificador(Long Id);
+
 	
 
 
