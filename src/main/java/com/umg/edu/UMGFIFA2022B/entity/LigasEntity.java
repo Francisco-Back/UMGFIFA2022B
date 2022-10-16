@@ -22,6 +22,9 @@ public class LigasEntity {
    private String Fecha_Final;
    @Column(name="Cant_Equipos")
    private int Cant_Equipos;
+   @Column(name="Ranking")
+   private int Ranking;
+   
    
    @NotNull
    @ManyToOne( cascade = CascadeType.ALL)

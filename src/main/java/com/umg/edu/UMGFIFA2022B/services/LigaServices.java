@@ -2,6 +2,8 @@ package com .umg.edu.UMGFIFA2022B.services;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -71,6 +73,13 @@ public  Long Verificador(Long Id) {
 		System.out.println(this.ligasRepository.Verificador(Id).getUsuario().getId());
 	return this.ligasRepository.Verificador(Id).getUsuario().getId();
 }
+	
+    @Transactional
+    @Override
+	public void Ranking(Long id, int Ranking) {
+		
+		 this.ligasRepository.Ranking(Ranking, id);
+	}
 	
 
 

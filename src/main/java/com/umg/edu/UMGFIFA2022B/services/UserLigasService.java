@@ -1,7 +1,8 @@
 package com.umg.edu.UMGFIFA2022B.services;
 
 
-import java.util.List;
+import java.util.*;
+
 
 import javax.transaction.Transactional;
 
@@ -13,12 +14,9 @@ import com.umg.edu.UMGFIFA2022B.TSecurity.Repository.UsuarioRepository;
 import com.umg.edu.UMGFIFA2022B.entity.LigasEntity;
 import com.umg.edu.UMGFIFA2022B.entity.UserLigaEntity;
 import com.umg.edu.UMGFIFA2022B.entity.Enum.EstadoLigas;
-import com.umg.edu.UMGFIFA2022B.mapper.UserLIgasInDTOoUserLigasEntity;
 import com.umg.edu.UMGFIFA2022B.repository.LigasRepository;
 import com.umg.edu.UMGFIFA2022B.repository.UserLIgasRepository;
 import com.umg.edu.UMGFIFA2022B.services.ImServices.ImUserLigas;
-
-import com.umg.edu.UMGFIFA2022B.services.dto.UserLigasDTO;
 
 @Service
 public class UserLigasService implements  ImUserLigas{
@@ -78,5 +76,41 @@ public List<UserLigaEntity> SearchIdUser(Long UserID){
 		
 		 this.UsLigasRepository.CEsatado(estadoLigas, id);
 	}
+    @Transactional
+    @Override
+	public void Ranking(Long id, int Ranking) {
+		
+		 this.UsLigasRepository.Ranking(Ranking, id);
+	}
+    @Transactional
+    @Override
+	public void Punteo(Long id, int Punteo) {
+		
+		 this.UsLigasRepository.Punteo(Punteo, id);
+	}
+    
+    @Override
+    public List<UserLigaEntity> Ordenamiento(Long LigaID){
+    	List<UserLigaEntity> rt=this.UsLigasRepository.searchLigasID(LigaID);
+    	       int vr =rt.get(1).getRanking();
+    		if(vr==0) {
+    			
+    			return this.UsLigasRepository.searchLigasID(LigaID);
+    			
+    		}else {
+    			
+    			Collections.sort(rt,(o1, o2) -> o1.getRanking());
+                			
+    			return rt;
+    			
+    		}
+    		
+    				
+    
+    		
+    	}
+        
+    
+    
 
 }

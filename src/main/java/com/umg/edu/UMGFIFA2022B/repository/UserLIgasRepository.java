@@ -30,5 +30,11 @@ public interface UserLIgasRepository extends JpaRepository<UserLigaEntity, Long>
 	@Query(value = "UPDATE user_ligas SET estado=:tado WHERE id=:ID", nativeQuery = true)
 	public void CEsatado(@Param("tado") int tado, @Param("ID")Long ID);
 	
+	@Modifying
+	@Query(value = "UPDATE user_ligas SET puntaje=:tado WHERE id=:ID", nativeQuery = true)
+	public void  Punteo(@Param("tado") int tado, @Param("ID")Long ID);
+	@Modifying
+	@Query(value = "UPDATE user_ligas SET ranking=:tado WHERE id=:ID", nativeQuery = true)
+	public void Ranking(@Param("tado") int tado, @Param("ID")Long ID);
 }
 

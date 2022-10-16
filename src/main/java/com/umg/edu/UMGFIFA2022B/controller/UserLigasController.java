@@ -38,6 +38,17 @@ public class UserLigasController  {
 	}
 	}
 	
+	@GetMapping("/Ordenamiento/{LigasID}")
+	public ResponseEntity<?> Ordenamiento(@PathVariable("LigasID") Long LigaID){
+	if(userligasService.Ordenamiento(LigaID)!=null) {
+		return new ResponseEntity<>(this.userligasService.Ordenamiento(LigaID),HttpStatus.OK);
+	}else {
+		return new ResponseEntity<>(new Mensaje("Liga No encontrada"), HttpStatus.NOT_FOUND);
+	}
+	}
+	
+	
+	
 	@GetMapping("/searchuser/{UserID}")
 	public ResponseEntity<?> Ligauser(@PathVariable("UserID") Long UserID){
 		if(userligasService.SearchIdUser(UserID)!=null) {
@@ -73,7 +84,7 @@ public class UserLigasController  {
 	}
 	
 	
-	
+
 	
 	
 	

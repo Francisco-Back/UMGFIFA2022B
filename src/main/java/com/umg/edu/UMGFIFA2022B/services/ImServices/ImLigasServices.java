@@ -20,6 +20,8 @@ public interface ImLigasServices  {
 
 	Long Verificador(Long Id);
 
+	void Ranking(Long id, int Ranking);
+
 	
 
 

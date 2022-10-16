@@ -32,6 +32,10 @@ public class UserLigaEntity {
 	 private Long UserID;
 	 @Column(name="LigasID")
 	   private Long LigasID;*/
+	@Column(name="Puntaje")
+	   private int puntaje;
+	@Column(name="Ranking")
+	   private int ranking;
 	   @Column(name="Estado")
 	   private EstadoLigas Estado;
 	   
@@ -44,5 +48,7 @@ public class UserLigaEntity {
 	   @ManyToOne( cascade = CascadeType.ALL)
 	   @JoinColumn(name="LigasID", referencedColumnName = "id", columnDefinition = "int8")
 	   private LigasEntity ligasEntity;
+	   
+	   
 	 
 }

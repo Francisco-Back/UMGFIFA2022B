@@ -17,6 +17,12 @@ public interface ImUserLigas {
 
 	void updateEstados(Long id, int estadoLigas);
 
+	void Ranking(Long id, int estadoLigas);
+
+	void Punteo(Long id, int estadoLigas);
+
+	List<UserLigaEntity> Ordenamiento(Long LigaID);
+
 
 
 }

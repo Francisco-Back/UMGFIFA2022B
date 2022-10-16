@@ -22,7 +22,7 @@ import org.springframework.stereotype.Component;
 
             rolService.save(rolAdmin);
             rolService.save(rolUser);
-
+            
         }
 
     }*/
