@@ -1,4 +1,4 @@
-package com.umg.edu.UMGFIFA2022B.util;
+/*package com.umg.edu.UMGFIFA2022B.util;
 
 import java.io.*;
 
@@ -68,25 +68,11 @@ public class CreatePartidos implements CommandLineRunner {
  			   System.out.println(partidoEntity.toString());
  			   
  			   partidosService.save(partidoEntity);
-	    	  //rolService.save(rolAdmin);
-	    	 /* "ID": 1,
-	          "Marcador1": 0,
-	          "Marcador2":0,
-	         "AM": "am",
-	         "Bandera1": "https://flagcdn.com/sn.svg",
-	         "Bandera2": "https://flagcdn.com/nl.svg",
-	         "Columna": "ID1",
-	         "Fecha": "21/11/2022",
-	         "Grupos ": "Grupos A",
-	         "Horario": "04:00",
-	         "Jornada ": 1,
-	         "Pais1": "Senegal",
-	         "Pais2": "Países Bajos",
-	         "Tamaño": "A"
-	        	 */
+
 	      }
 	      System.out.println("Fin del ciclo");
 	 }
 	 
 	 
 }
+*/
