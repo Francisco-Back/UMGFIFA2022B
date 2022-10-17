@@ -23,8 +23,9 @@ public class PartidosController {
 	@PatchMapping("/Update/{Mar1}/{Mar2}/{Col}")
 	public ResponseEntity<?>  UpdateMarcador(@PathVariable("Mar1") int Mar1 ,
 			@PathVariable("Mar2") int Mar2 ,
-			@PathVariable("Col") String Col){
+			@PathVariable("Col") Long Col){
 		partidosService.Resultados(Mar1, Mar2, Col);
+		
 		
 		return  new ResponseEntity<>(new Mensaje("Resultado Ingresado"),HttpStatus.OK);
 	
@@ -38,7 +39,7 @@ public class PartidosController {
 	}
 	
 	@GetMapping("/Search/{Col}")
-	public ResponseEntity<?> Searchpartido(@PathVariable(value = "Col") String Col) {
+	public ResponseEntity<?> Searchpartido(@PathVariable(value = "Col") Long Col) {
 		PartidoEntity gt=new PartidoEntity();
 		
 		if(Col!=null) {

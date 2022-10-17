@@ -11,4 +11,8 @@ public class VaticinioService implements ImVaticinioServices {
 	   @Autowired
 	private VaticinioRepository vaticinioRepository; 
 	   
+	   
+	   
+	   
+	   
 }

@@ -8,10 +8,10 @@ public interface ImPartidoService {
 
 	void save(PartidoEntity partidoEntity);
 
-	PartidoEntity Search(String Columna);
-
-	void Resultados(int Mar1, int Mar2, String Columna);
-
 	List<PartidoEntity> Partidos();
+
+	void Resultados(int Mar1, int Mar2, Long Columna);
+
+	PartidoEntity Search(Long Columna);
 
 }

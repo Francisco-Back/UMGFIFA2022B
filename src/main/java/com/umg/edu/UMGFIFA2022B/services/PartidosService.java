@@ -23,15 +23,15 @@ public class PartidosService implements ImPartidoService {
 	    }
 	   
 	   @Override
-	   public PartidoEntity Search(String Columna) {
+	   public PartidoEntity Search(Long Columna) {
 		   return this.partidosRepository.SearchIDC(Columna);
 	   }
 	   
-	    @Transactional
+	@Transactional
     @Override
-	public void Resultados(int Mar1, int Mar2, String Columna) {
+	public void Resultados(int Mar1, int Mar2, Long col) {
 		
-		 this.partidosRepository.Marcador(Mar1, Mar2, Columna);
+		 this.partidosRepository.Marcador(Mar1, Mar2, col);
 	}
 	    
 	    
@@ -40,7 +40,7 @@ public class PartidosService implements ImPartidoService {
 		 return this.partidosRepository.findAll();
 	 }
 	 
-	  public int[] ObtResul(String Columna) {
+	  public int[] ObtResul(Long Columna) {
 		  PartidoEntity RTE=new PartidoEntity();
 		  RTE=this.partidosRepository.SearchIDC(Columna);
 		  int[] Resultado= new int[2];
@@ -50,8 +50,8 @@ public class PartidosService implements ImPartidoService {
 		  Resultado[2]=Mar2;
 		  return Resultado;
 	  }
+
 	  
-	    
-	
+	   	
 	
 }

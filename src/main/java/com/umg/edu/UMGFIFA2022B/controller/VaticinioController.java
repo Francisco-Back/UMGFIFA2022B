@@ -11,5 +11,9 @@ import com.umg.edu.UMGFIFA2022B.services.VaticinioService;
 public class VaticinioController {
 	@Autowired	
 	private  VaticinioService vaticinioController ;
+	
+	
+	
+	
 
 }

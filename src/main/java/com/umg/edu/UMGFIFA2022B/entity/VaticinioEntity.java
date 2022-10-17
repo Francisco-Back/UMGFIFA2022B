@@ -35,6 +35,9 @@ public class VaticinioEntity {
 	   private int Vat1;
 	   @Column(name="Vat2")
 	   private int Vat2;
+	   @Column(name="Punteo")
+	   private int punteo;
+	   
 	   
 	   @NotNull
 	   @ManyToOne( cascade = CascadeType.ALL)
@@ -49,8 +52,12 @@ public class VaticinioEntity {
 	   @Column(name="FechaV")
 	   private Date createDate;
 	   
+	   @NotNull
+	   @ManyToOne( cascade = CascadeType.ALL)
+	   @JoinColumn(name="PartidoID", referencedColumnName = "id", columnDefinition = "int8")
+	   private PartidoEntity partidoEntity;
 	 
-	
+	  
 	
 	
 	
