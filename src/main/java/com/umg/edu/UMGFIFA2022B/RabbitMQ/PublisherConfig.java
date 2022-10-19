@@ -6,15 +6,21 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.beans.factory.annotation.Value;
 
 
+
 @Configuration
 public class PublisherConfig {
 
 	@Value("${UmgFifa.queue.name}")
 	private String message;
-	
+	@Value("${spring.rabbitmq.password}")
+	private String password;
+	@Value("${spring.rabbitmq.username}")
+	private String username;
+
 	@Bean
-	public Queue queeu() {
-		return new Queue(message,true);
+	public Queue queue() {
+	//	System.out.println(message + password+username);
+		return new Queue(message);
 	}
 	
 }

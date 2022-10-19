@@ -15,6 +15,8 @@ public class Umgfifa2022BApplication {
 	
 	public static void main(String[] args) {
 		SpringApplication.run(Umgfifa2022BApplication.class, args);
+		
+		
 	}
 
 	

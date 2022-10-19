@@ -2,6 +2,7 @@ package com.umg.edu.UMGFIFA2022B.entity;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -20,10 +21,10 @@ import com.umg.edu.UMGFIFA2022B.TSecurity.Entity.Usuario;
 @Data
 @Entity
 @Table(name="Vaticinio")
-public class VaticinioEntity {
+public class VaticinioEntity  {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private Long ID;
 
 	   @Column(name="Partido")
 	   private String Partido;

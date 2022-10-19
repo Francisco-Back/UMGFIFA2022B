@@ -10,7 +10,7 @@ import lombok.Data;
 @Entity
 @Table(name="partidos")
 public class PartidoEntity{
-	@Id
+	   @Id
 	   @Column(name="ID")
 	    public Long ID;
 	   @Column(name="Marcador1")
