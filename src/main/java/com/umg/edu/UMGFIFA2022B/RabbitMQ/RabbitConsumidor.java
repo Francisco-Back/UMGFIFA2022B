@@ -19,6 +19,7 @@ import com.umg.edu.UMGFIFA2022B.entity.VaticinioEntity;
 import com.umg.edu.UMGFIFA2022B.repository.LigasRepository;
 import com.umg.edu.UMGFIFA2022B.repository.PartidosRepository;
 import com.umg.edu.UMGFIFA2022B.repository.VaticinioRepository;
+import com.umg.edu.UMGFIFA2022B.services.VaticinioService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -26,7 +27,7 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 public class RabbitConsumidor {
 	@Autowired
-	private VaticinioRepository vaticinioRepository;
+	private VaticinioService vaticinioService;
 	@Autowired
 	private   LigasRepository ligasRepository;
 	@Autowired
@@ -34,38 +35,42 @@ public class RabbitConsumidor {
 	@Autowired
 	private PartidosRepository partidosRepository;
 	
-	VaticinioEntity rt=new VaticinioEntity();
-	Usuario user= new Usuario();
-	LigasEntity liga =new LigasEntity();
-	PartidoEntity partido=new PartidoEntity();
+	Long re=(long) 1;
 	
 	
 	@RabbitListener(queues= {"${UmgFifa.queue.name}"})
 	public void receive(@Payload VaticinioAuxEntity message) {
-		
+		VaticinioEntity rt=new VaticinioEntity();
+		Usuario user= new Usuario();
+		LigasEntity liga =new LigasEntity();
+		PartidoEntity partido=new PartidoEntity();
 		log.info("mensaje Recibido",message);
+		System.out.println("Paso 1");
 		
 		if(message!=null) { 
 			try {
+				System.out.println("Paso 2 mensaje lleno");
+				rt.setId(re);
 			 rt.setPartido(message.getPartido());
 			 rt.setNombre(message.getNombre());
 			 rt.setVat1(message.getVat1());
 			 rt.setVat2(message.getVat2());
 			 rt.setPunteo(message.getPunteo());
-			 user=usuarioRepository.findById(message.getIDUser()).orElseThrow();
-			 rt.setUsuario(user);
 			 liga=ligasRepository.findById(message.getIDLiga()).orElseThrow();
 			 rt.setLigasEntity(liga);
+			 user=usuarioRepository.findById(message.getIDUser()).orElseThrow();
+			 rt.setUsuario(user);
 			 partido=partidosRepository.findById(message.getIDPartido()).orElseThrow();
 			 rt.setPartidoEntity(partido);
 			 rt.setCreateDate(message.getCreateDate());
-			this.vaticinioRepository.save(rt);
+			vaticinioService.save(rt);
 			
-			System.out.println("Mensaje Lleno" +rt.toString());
-			
+			System.out.println("Mensaje Lleno   " +rt.toString());
+			re++;
 			} catch (Exception e) {
-				System.out.print("Datos Incorrectos");
-				System.out.println("Mensaje Lleno" +rt.toString());
+				System.out.println(e);
+				System.out.println("Datos Incorrectos");
+				System.out.println("Mensaje ERROR" +rt.toString());
 			}
 			
 		}else {
@@ -76,6 +81,7 @@ public class RabbitConsumidor {
 	}
 	private void  makeSlow() {
 		try {
+			System.out.println("Paso 5 tiempo");
 			Thread.sleep(5000);
 		}catch (InterruptedException e) {
 			e.printStackTrace();

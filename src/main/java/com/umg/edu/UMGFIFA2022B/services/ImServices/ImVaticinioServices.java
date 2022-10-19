@@ -20,4 +20,6 @@ public interface ImVaticinioServices {
 
 	void SenRabbit(VaticinioAuxEntity vaticinioAuxEntity);
 
+	void save(VaticinioEntity vaticinioEntity);
+
 }

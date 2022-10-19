@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.umg.edu.UMGFIFA2022B.RabbitMQ.RabbitProductor;
+import com.umg.edu.UMGFIFA2022B.entity.PartidoEntity;
 import com.umg.edu.UMGFIFA2022B.entity.VaticinioAuxEntity;
 import com.umg.edu.UMGFIFA2022B.entity.VaticinioEntity;
 import com.umg.edu.UMGFIFA2022B.repository.VaticinioRepository;
@@ -63,7 +64,12 @@ public class VaticinioService implements ImVaticinioServices {
 			
 			 this.vaticinioRepository.RankingVat(Ranking, ID);
 		}
-		
+
+	   @Override
+	   public void save(VaticinioEntity vaticinioEntity ){
+		   System.out.println("Paso 3 servicio");
+	        vaticinioRepository.save(vaticinioEntity);
+	    }
 	   
 	   
 	   
