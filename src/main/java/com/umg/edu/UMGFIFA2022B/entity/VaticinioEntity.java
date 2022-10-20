@@ -6,6 +6,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -19,8 +21,8 @@ import com.umg.edu.UMGFIFA2022B.TSecurity.Entity.Usuario;
 @Table(name="Vaticinio")
 public class VaticinioEntity  {
 	@Id
-	//@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="id",columnDefinition = "serial")
 	private Long id;
 
 	   @Column(name="Partido")
@@ -38,12 +40,12 @@ public class VaticinioEntity  {
 	   
 	   
 	   @NotNull
-	   @ManyToOne( cascade =  { CascadeType.ALL},fetch= FetchType.EAGER)
+	   @ManyToOne( cascade =  { CascadeType.MERGE},fetch= FetchType.EAGER)
 	   @JoinColumn( name="UserID", referencedColumnName = "id", columnDefinition = "int8")
 	   private Usuario usuario;
 	   
 	   @NotNull
-	   @ManyToOne( cascade = { CascadeType.ALL},fetch= FetchType.EAGER)
+	   @ManyToOne( cascade = { CascadeType.MERGE},fetch= FetchType.EAGER)
 	   @JoinColumn(name="LigasID", referencedColumnName = "id", columnDefinition = "int8")
 	   private LigasEntity ligasEntity;
 	   
@@ -51,7 +53,7 @@ public class VaticinioEntity  {
 	   private Date createDate;
 	   
 	   @NotNull
-	   @ManyToOne( cascade = { CascadeType.ALL},fetch= FetchType.EAGER)
+	   @ManyToOne( cascade = { CascadeType.MERGE},fetch= FetchType.EAGER)
 	   @JoinColumn(name="PartidoID", referencedColumnName = "id", columnDefinition = "int8")
 	   private PartidoEntity partidoEntity;
 	 

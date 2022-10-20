@@ -41,7 +41,7 @@ public class UserLigasService implements  ImUserLigas{
 	    
 		 Usuario e= usuarioRepository.findById(UserID)
 				 .orElseThrow(); 
-		 LigasE.setUsuario(e);;
+		 LigasE.setUsuario(e);
 		 LigasEntity l=ligasRepository.findById(LigasID)
 				 .orElseThrow();
 		 LigasE.setLigasEntity(l);

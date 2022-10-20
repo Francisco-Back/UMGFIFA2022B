@@ -57,7 +57,7 @@ public class VaticinioService implements ImVaticinioServices {
 		   return this.vaticinioRepository.PartidoAll(UsParIDerID);
 		   
 	   }
-	   
+	               
 	   @Transactional
 	    @Override
 		public void UpdateRanking(Long ID, int Ranking) {

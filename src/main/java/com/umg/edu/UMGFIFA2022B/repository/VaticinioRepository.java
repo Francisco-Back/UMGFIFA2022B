@@ -12,7 +12,7 @@ import com.umg.edu.UMGFIFA2022B.entity.VaticinioEntity;
 @Repository
 public interface VaticinioRepository   extends JpaRepository<VaticinioEntity, Long>{
 
-	@Query(value = "select * from vaticinio WHERE ligasid=:LigaID and id=:VPartido", nativeQuery = true)
+	@Query(value = "select * from vaticinio WHERE ligasid=:LigaID and partidoid=:VPartido", nativeQuery = true)
 	 List<VaticinioEntity> ListarVat(Long LigaID, Long VPartido);
 	
 	@Modifying

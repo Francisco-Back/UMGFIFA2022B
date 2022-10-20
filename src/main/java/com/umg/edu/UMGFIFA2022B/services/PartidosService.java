@@ -1,9 +1,7 @@
 package com.umg.edu.UMGFIFA2022B.services;
 
 import java.util.List;
-
 import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.umg.edu.UMGFIFA2022B.entity.PartidoEntity;
@@ -32,6 +30,9 @@ public class PartidosService implements ImPartidoService {
 	public void Resultados(int Mar1, int Mar2, Long col) {
 		
 		 this.partidosRepository.Marcador(Mar1, Mar2, col);
+		 
+		
+		 
 	}
 	    
 	    
@@ -50,8 +51,7 @@ public class PartidosService implements ImPartidoService {
 		  Resultado[2]=Mar2;
 		  return Resultado;
 	  }
-
-	  
+        
 	   	
 	
 }

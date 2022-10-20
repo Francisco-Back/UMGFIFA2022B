@@ -27,7 +27,7 @@ public class VaticinioController {
 		     
 		
 		if(vaticinioAuxEntity!=null) {
-			vaticinioService.SenRabbit(vaticinioAuxEntity);
+		vaticinioService.SenRabbit(vaticinioAuxEntity);
 			return new ResponseEntity<>(new Mensaje("Mensaje Enviado"),HttpStatus.CREATED);
 		}else {
 			return new ResponseEntity<>(new Mensaje("Mensaje no enviado"),HttpStatus.NOT_ACCEPTABLE);
