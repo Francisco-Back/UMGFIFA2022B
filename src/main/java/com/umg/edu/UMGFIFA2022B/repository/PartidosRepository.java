@@ -13,7 +13,7 @@ import com.umg.edu.UMGFIFA2022B.entity.PartidoEntity;
 
 @Repository
 public interface PartidosRepository  extends JpaRepository<PartidoEntity, Long> {
-	@Query(value = "SELECT * FROM partidos WHERE columna =:Col", nativeQuery = true)
+	@Query(value = "SELECT * FROM partidos WHERE id =:Col", nativeQuery = true)
 	PartidoEntity SearchIDC(Long Col);
 	
 	
