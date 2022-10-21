@@ -115,7 +115,7 @@ public class UserLigasService implements ImUserLigas {
 
 			for (int i = 0; i < gt.size(); i++) {
 
-				System.out.println(gt.get(i));
+				//System.out.println(gt.get(i));
 				// primer dato
 
 				if (i == 0) {
