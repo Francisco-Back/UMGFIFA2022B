@@ -8,29 +8,28 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.umg.edu.UMGFIFA2022B.TSecurity.DTO.Mensaje;
 import com.umg.edu.UMGFIFA2022B.entity.PartidoEntity;
 import com.umg.edu.UMGFIFA2022B.services.PartidosService;
-import com.umg.edu.UMGFIFA2022B.services.VaticinioService;
+
 @RestController
 @RequestMapping("/api/Partidos")
 public class PartidosController {
+	
 	@Autowired
 	private PartidosService partidosService;
-	@Autowired
-	private VaticinioService vaticinioService;
 	
 	
 	
-	@PatchMapping("/Update/{Mar1}/{Mar2}/{Col}")
+	@PatchMapping("/Update/{Mar1}/{Mar2}/{Col}/{IdLiga}")
 	public ResponseEntity<?>  UpdateMarcador(@PathVariable("Mar1") int Mar1 ,
 			@PathVariable("Mar2") int Mar2 ,
-			@PathVariable("Col") Long Col){
+			@PathVariable("Col") Long Col,
+			@PathVariable("IdLiga") Long IdLiga){
 		
-		if(Col!=null) {
+		if(Col!=0) {
 			
-			partidosService.Resultados(Mar1, Mar2, Col);
+			partidosService.Resultados(Mar1, Mar2, Col,IdLiga);
 			
 			return  new ResponseEntity<>(new Mensaje("Resultado Ingresado"),HttpStatus.OK);
 			

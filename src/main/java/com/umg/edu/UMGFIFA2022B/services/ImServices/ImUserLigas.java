@@ -19,9 +19,16 @@ public interface ImUserLigas {
 
 	void Ranking(Long id, int estadoLigas);
 
-	void Punteo(Long id, int estadoLigas);
 
 	List<UserLigaEntity> Ordenamiento(Long LigaID);
+
+	void RankingandPunteo(Long id, int Punteo, int Ranking);
+
+	void Punteo(Long Iduser, Long Idliga, int Punteo);
+
+	UserLigaEntity PunteoAll(Long Iduser, Long Idliga);
+
+	void UpdateRanking(Long Idligas);
 
 
 

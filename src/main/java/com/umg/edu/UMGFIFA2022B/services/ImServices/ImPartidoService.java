@@ -10,8 +10,9 @@ public interface ImPartidoService {
 
 	List<PartidoEntity> Partidos();
 
-	void Resultados(int Mar1, int Mar2, Long Columna);
 
 	PartidoEntity Search(Long Columna);
+
+	void Resultados(int Mar1, int Mar2, Long col, Long IdLiga);
 
 }

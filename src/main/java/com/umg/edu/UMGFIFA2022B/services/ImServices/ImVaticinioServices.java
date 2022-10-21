@@ -22,4 +22,6 @@ public interface ImVaticinioServices {
 
 	void save(VaticinioEntity vaticinioEntity);
 
+	List<VaticinioEntity> ListVatPart(Long UsParIDerID, Long IdLiga);
+
 }
