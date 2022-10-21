@@ -42,7 +42,7 @@ public class PartidosService implements ImPartidoService {
 		 List<VaticinioEntity> det=this.vaticinioService.ListVatPart(col, IdUseliga);
 		// System.out.println(det);
 		 ResultadoCal(Mar1, Mar2, det,IdUseliga);
-		
+		  this.userLigasService.UpdateRanking(IdUseliga);
 		 
 	}
 	    
@@ -68,58 +68,66 @@ public class PartidosService implements ImPartidoService {
 		 // System.out.println("paso 1");
 		  //System.out.println(lista);
           try {
-		  int Punteo=0;
+		
 		  for (int i=0; i<lista.size(); i++) { 
+			  int Punteo=0;
+			//  System.out.println("Paso " +i);
 			//  System.out.println(lista.size());
 			//  System.out.println("Id Liga"+lista.get(i).getLigasEntity().getId());
 			//  System.out.println("Id user"+lista.get(i).getUsuario().getId());
 		       UserLigaEntity dert=this.userLigasService.PunteoAll(lista.get(i).getUsuario().getId(),lista.get(i).getLigasEntity().getId());
-		     //  System.out.println(dert);
+		    //  System.out.println(dert);
+		     //  System.out.println(lista.get(i));
 		       int aux=dert.getPuntaje();
 			
 		         if(Res1==lista.get(i).getVat1() && Res2==lista.get(i).getVat2()) {
 		             if(Res1==Res2) {
 		        		 Punteo=1; 
-		        		  // System.out.println("punto "+ Punteo + lista.get(i).getVat1() + lista.get(i).getVat2());
+		        	//  System.out.println("punto empate "+ Punteo +"  "+ lista.get(i).getVat1() + lista.get(i).getVat2());
+		        		 // System.out.println(dert);
 			         }else {
 			        	 Punteo=3;
-			        	  //System.out.println("punto "+ Punteo + lista.get(i).getVat1() + lista.get(i).getVat2());	 
+			        	//  System.out.println("punto acerto "+ Punteo+"  " + lista.get(i).getVat1() + lista.get(i).getVat2());	
+			        	 // System.out.println(dert);
 			         }
 		
-			         }else {
-			        	    if(Res1!=lista.get(i).getVat1() || Res2!=lista.get(i).getVat2()) {
+			         } if(Res1!=lista.get(i).getVat1() || Res2!=lista.get(i).getVat2()) {
 					        	 if(Res1==lista.get(i).getVat1()) {
 					        		 Punteo=1; 
 					        			
-						        	 // System.out.println("punto "+ Punteo + lista.get(i).getVat1() + lista.get(i).getVat2());
+						        	// System.out.println("punto acerto 1= "+ Punteo + lista.get(i).getVat1() + lista.get(i).getVat2());
+						        	 //System.out.println(dert);
 					        	 }if(Res2== lista.get(i).getVat2()) {
 					        		 Punteo=1; 
 					        			
-						        	 // System.out.println("punto "+ Punteo + lista.get(i).getVat1() + lista.get(i).getVat2());
+						        	// System.out.println("punto 1 de 2= "+ Punteo + lista.get(i).getVat1() + lista.get(i).getVat2());
+						        	 //System.out.println(dert);
 					        	 }
 					        	 
 					        
 					        	// this.vaticinioService.UpdateRanking(lista.get(i).getId(),Punteo);
+					         }else {
+					        	// System.out.println("Aqui seria si el falso");
 					         }
-			         }
+			         
 		        	 
 		     
 		    
 		         aux=aux+Punteo;  
-		       //  System.out.println("Punteo "+Punteo);
+		       // System.out.println("Punteo a ingresar"+Punteo);
 	        	 this.vaticinioService.UpdateRanking(lista.get(i).getId(),Punteo);
 	        	 this.userLigasService.Punteo(lista.get(i).getUsuario().getId(), lista.get(i).getLigasEntity().getId(),aux);
 	        	// System.out.println("paso 3");
 		       //  System.out.println("paso 6");
 		}
-		  System.out.println("UpdateRanking");
+		//  System.out.println("UpdateRanking");
 		 
 		  
       	} catch (Exception e) {
       		System.out.println("error");
 			System.out.println(e);
 		}
-          this.userLigasService.UpdateRanking(IdLIga);
+        
 		  
 		  return true;
 	  }

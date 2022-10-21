@@ -16,6 +16,10 @@ public interface UserLIgasRepository extends JpaRepository<UserLigaEntity, Long>
 	
 	@Query(value = "SELECT * FROM user_ligas WHERE ligasid =:LigasID", nativeQuery = true)
 	List<UserLigaEntity> searchLigasID(Long LigasID);
+	@Query(value = "SELECT * FROM user_ligas WHERE ligasid =:LigasID order by puntaje desc", nativeQuery = true)
+	List<UserLigaEntity> ordenmayor(Long LigasID);
+	@Query(value = "SELECT * FROM user_ligas WHERE ligasid =:LigasID order by ranking desc", nativeQuery = true)
+	List<UserLigaEntity> ordenmayorranling(Long LigasID);
 	
 	@Query(value = "SELECT userid FROM user_ligas WHERE ligasid =:LigasID", nativeQuery = true)
 	List<Usuario> ObUseliga(Long LigasID);
