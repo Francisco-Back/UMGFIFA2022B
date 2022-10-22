@@ -16,6 +16,10 @@ public interface UserLIgasRepository extends JpaRepository<UserLigaEntity, Long>
 	
 	@Query(value = "SELECT * FROM user_ligas WHERE ligasid =:LigasID", nativeQuery = true)
 	List<UserLigaEntity> searchLigasID(Long LigasID);
+	@Query(value = "SELECT * FROM user_ligas WHERE ligasid =:LigasID order by puntaje desc", nativeQuery = true)
+	List<UserLigaEntity> ordenmayor(Long LigasID);
+	@Query(value = "SELECT * FROM user_ligas WHERE ligasid =:LigasID order by ranking desc", nativeQuery = true)
+	List<UserLigaEntity> ordenmayorranling(Long LigasID);
 	
 	@Query(value = "SELECT userid FROM user_ligas WHERE ligasid =:LigasID", nativeQuery = true)
 	List<Usuario> ObUseliga(Long LigasID);
@@ -26,15 +30,26 @@ public interface UserLIgasRepository extends JpaRepository<UserLigaEntity, Long>
 	@Query(value = "SELECT * FROM user_ligas WHERE estado =:estado", nativeQuery = true)
     public List<UserLigaEntity> findAllByEstado(int estado);
 	
+	@Query(value = "select * from user_ligas where userid=:id1 and ligasid=:id2 ", nativeQuery = true)
+    public UserLigaEntity Resultadoall( @Param("id1")  Long id1,@Param("id2")  Long id2);
+	
+	
+	
 	@Modifying
 	@Query(value = "UPDATE user_ligas SET estado=:tado WHERE id=:ID", nativeQuery = true)
 	public void CEsatado(@Param("tado") int tado, @Param("ID")Long ID);
 	
 	@Modifying
-	@Query(value = "UPDATE user_ligas SET puntaje=:tado WHERE id=:ID", nativeQuery = true)
-	public void  Punteo(@Param("tado") int tado, @Param("ID")Long ID);
+	@Query(value = "UPDATE user_ligas SET puntaje=:tado WHERE userid=:iduser and ligasid=:Idliga ", nativeQuery = true)
+	public void  Punteo(@Param("tado") int tado, @Param("iduser")Long iduser,@Param("Idliga")Long Idliga);
+	
 	@Modifying
 	@Query(value = "UPDATE user_ligas SET ranking=:tado WHERE id=:ID", nativeQuery = true)
 	public void Ranking(@Param("tado") int tado, @Param("ID")Long ID);
+	
+	@Modifying
+	@Query(value = "UPDATE user_ligas SET ranking=:tado,puntaje=:tado2 WHERE id=:ID", nativeQuery = true)
+	public void RankingandPunteo(@Param("tado") int tado,@Param("tado2") int tado2, @Param("ID")Long ID);
+	
 }
 

@@ -20,9 +20,11 @@ public interface VaticinioRepository   extends JpaRepository<VaticinioEntity, Lo
 	public void RankingVat(@Param("tado") int tado, @Param("ID")Long ID);
 	
 	@Query(value = "select * from vaticinio WHERE userid=:UserID", nativeQuery = true)
-	 List<VaticinioEntity> VatAllU(Long UserID);
+	 List<VaticinioEntity> VatAllU( @Param("UserID") Long UserID);
 	
 	@Query(value = "select * from vaticinio WHERE partidoid=:ParID", nativeQuery = true)
-	 List<VaticinioEntity> PartidoAll(Long ParID);
+	 List<VaticinioEntity> PartidoAll(@Param("ParID") Long ParID);
 	
+	@Query(value = "select * from vaticinio where partidoid=:ParID and ligasid=:Idliga", nativeQuery = true)
+	 List<VaticinioEntity> ListVatPart(@Param("ParID") Long ParID, @Param("Idliga") Long Idliga);
 }
